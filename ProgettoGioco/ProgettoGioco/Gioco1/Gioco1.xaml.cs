@@ -15,7 +15,8 @@ namespace ProgettoGioco.Gioco1
         public Gioco1()
         {
             InitializeComponent();
-            //qui bisogna scrivere la logica da implementare
+            //qui bisogna scrivere la logica da implementare 
+
         }
     }
 }
