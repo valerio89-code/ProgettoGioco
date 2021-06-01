@@ -6,8 +6,11 @@
         <StackLayout>
             <Image Source="" x:Name="img_Risultato"></Image>
             <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                <ImageButton Source="https://cdn.discordapp.com/attachments/847751481078841345/848149537579466762/nuovoscree2.png" Aspect="AspectFit" Clicked="ImageButton_Clicked"></ImageButton>
-                <Button x:Name="btn_CliccaImmagine" Clicked="btn_CliccaImmagine_Clicked" Margin="180" VerticalOptions="Center" ImageSource="https://cdn.discordapp.com/attachments/847751481078841345/848145606988136468/orata2_1.png" BackgroundColor="Blue"/>
+                <ImageButton Source="https://cdn.discordapp.com/attachments/847751481078841345/848149537579466762/nuovoscree2.png" 
+                             Aspect="AspectFit" Clicked="ImageButton_Clicked"></ImageButton>
+                <Button x:Name="btn_CliccaImmagine" Clicked="btn_CliccaImmagine_Clicked" Margin="180" VerticalOptions="Center" 
+                        ImageSource="https://cdn.discordapp.com/attachments/847751481078841345/848145606988136468/orata2_1.png"
+                        BackgroundColor="Blue" IsVisible="false"/>
             </Grid>
             <Label Text="" x:Name="lbl_tempoStart"></Label>
         </StackLayout>

@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,24 +15,35 @@ namespace ProgettoGioco.Gioco1
         public Stopwatch Tempo { get; set; } = new Stopwatch();
         public int Hit = 0;
         public int Miss = 0;
+        public int contTemp = 0;
+        public Stopwatch TempoAcceso { get; set; } = new Stopwatch();
         public Random rnd = new Random();
         public StartGameOne()
         {
             InitializeComponent();
-        }
-        private void btn_Start_Clicked(object sender, EventArgs e)
-        {
-
-        }
+            if(contTemp == 0)
+            {
+                Tempo.Start();
+                contTemp = 1;
+            }
+            while (Tempo.Elapsed.TotalSeconds >= 10)
+            {
+                if (Tempo.Elapsed.TotalSeconds == 5)
+                {
+                    Tempo.Stop();
+                    Navigation.PopAsync();
+                }
+            }
+        } 
 
         private void btn_CliccaImmagine_Clicked(object sender, EventArgs e)
         {
-
+            btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
+            btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
-
             Miss++;
             lbl_tempoStart.Text = Miss.ToString();
         }
