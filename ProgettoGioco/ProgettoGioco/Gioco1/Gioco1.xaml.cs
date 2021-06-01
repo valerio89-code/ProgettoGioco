@@ -16,5 +16,9 @@ namespace ProgettoGioco.Gioco1
         {
             InitializeComponent();
         }
+        private async void btn_EnterGame_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new StartGameOne());
+        }
     }
 }
