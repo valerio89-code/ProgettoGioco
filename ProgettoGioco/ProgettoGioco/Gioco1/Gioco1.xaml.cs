@@ -16,6 +16,11 @@ namespace ProgettoGioco.Gioco1
         {
             InitializeComponent();
             //qui bisogna scrivere la logica da implementare 
+            Test2();
+        }
+        
+        private void Test2()
+        {
 
         }
     }
