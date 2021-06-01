@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Timers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ProgettoGioco.Gioco2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Gioco2 : ContentPage
+    public partial class GiocoSequenza : ContentPage
     {
+        public static Timer timer;
+        public int IndiceSequenza { get; set; } = 0;
         public int[] Sequenza { get; set; }
         public int CifreSequenza { get; set; }
-        public Gioco2(int livello)
+        public GiocoSequenza(int livello)
         {
             InitializeComponent();
+
             switch (livello)
             {
                 case 1:
@@ -44,11 +48,18 @@ namespace ProgettoGioco.Gioco2
                 Random rnd = new Random();
                 Sequenza[i] = rnd.Next(0, 9);
             }
+
         }
 
         private void btn_uno_Clicked(object sender, EventArgs e)
         {
-
+            if (VerificaInput(1, Sequenza[IndiceSequenza]))
+            {
+                btn_uno.BackgroundColor = Color.Green;
+                timer = new Timer(1000);
+                timer.Enabled = true;
+                btn_uno.BackgroundColor = Color.Default;
+            }
         }
 
         private void btn_due_Clicked(object sender, EventArgs e)
