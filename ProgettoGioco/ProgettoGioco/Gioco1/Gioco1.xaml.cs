@@ -15,9 +15,6 @@ namespace ProgettoGioco.Gioco1
         public Gioco1()
         {
             InitializeComponent();
-
-
         }
-
     }
 }
