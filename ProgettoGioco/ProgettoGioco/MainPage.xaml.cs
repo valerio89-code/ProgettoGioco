@@ -21,10 +21,10 @@ namespace ProgettoGioco
             //Navigation.PushAsync(new  )
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private async void Button_Clicked_1(object sender, EventArgs e)
         {
             //da modificare dal gruppo 2
-            //Navigation.PushAsync(new  )
+            await Navigation.PushAsync(new Gioco2());
         }
 
         private void Button_Clicked_2(object sender, EventArgs e)
