@@ -7,8 +7,13 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Button Text="1" x:Name="btn_uno" Grid.Column="0"  Grid.Row="0" Clicked="btn_uno_Clicked"/>
@@ -21,6 +26,7 @@
                 <Button Text="8" x:Name="btn_otto"  Grid.Column="1"  Grid.Row="2" Clicked="btn_otto_Clicked"/>
                 <Button Text="9" x:Name="btn_nove" Grid.Column="2"  Grid.Row="2" Clicked="btn_nove_Clicked"/>
                 <Button Text="0" x:Name="btn_zero" Grid.Column="1"  Grid.Row="3" Clicked="btn_zero_Clicked"/>
+                <Button Text="Exit" x:Name="btn_exit" Grid.Column="2"  Grid.Row="3" Clicked="btn_exit_Clicked"/>
             </Grid>
 
         </StackLayout>
