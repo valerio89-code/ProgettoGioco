@@ -15,10 +15,9 @@ namespace ProgettoGioco
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-            //da modificare dal gruppo 1
-            //Navigation.PushAsync(new  )
+            await Navigation.PushAsync(new Gioco1.Gioco1());
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)
