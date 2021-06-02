@@ -12,7 +12,7 @@
                         ImageSource="https://cdn.discordapp.com/attachments/847751481078841345/848145606988136468/orata2_1.png"
                         BackgroundColor="Blue" IsVisible="false"/>
             </Grid>
-            <Label Text="" x:Name="lbl_tempoStart"></Label>
+            <Label Text="{Binding StopWatchSecond}" FontSize="Medium" x:Name="lbl_tempoStart" PropertyChanged="lbl_tempoStart_PropertyChanged"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

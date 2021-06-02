@@ -21,23 +21,13 @@ namespace ProgettoGioco.Gioco1
         public StartGameOne()
         {
             InitializeComponent();
-            if(contTemp == 0)
-            {
-                Tempo.Start();
-                contTemp = 1;
-            }
-            while (Tempo.Elapsed.TotalSeconds >= 10)
-            {
-                if (Tempo.Elapsed.TotalSeconds == 5)
-                {
-                    Tempo.Stop();
-                    Navigation.PopAsync();
-                }
-            }
+            BindingContext = new StartGameOneViewModel();
+            
         } 
 
         private void btn_CliccaImmagine_Clicked(object sender, EventArgs e)
         {
+            Hit++;
             btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
             btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
         }
@@ -46,6 +36,14 @@ namespace ProgettoGioco.Gioco1
         {
             Miss++;
             lbl_tempoStart.Text = Miss.ToString();
+        }
+
+        private void lbl_tempoStart_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (lbl_tempoStart.Text == "10")
+            {
+                Navigation.PopAsync();
+            }
         }
     }
 }

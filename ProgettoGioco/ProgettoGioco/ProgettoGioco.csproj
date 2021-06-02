@@ -29,4 +29,8 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Gioco1\ViewModel\" />
+  </ItemGroup>
 </Project>
