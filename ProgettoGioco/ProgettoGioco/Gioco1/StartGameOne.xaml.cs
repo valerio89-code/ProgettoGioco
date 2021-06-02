@@ -28,14 +28,12 @@ namespace ProgettoGioco.Gioco1
         private void btn_CliccaImmagine_Clicked(object sender, EventArgs e)
         {
             Hit++;
-            btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
-            btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
+            
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
             Miss++;
-            lbl_tempoStart.Text = Miss.ToString();
         }
 
         private void lbl_tempoStart_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -44,6 +42,15 @@ namespace ProgettoGioco.Gioco1
             {
                 Navigation.PopAsync();
             }
+            if (lbl_tempoStart.Text == "1" || lbl_tempoStart.Text == "2" || lbl_tempoStart.Text == "3" || lbl_tempoStart.Text == "4")
+            {
+                btn_CliccaImmagine.IsVisible = false;
+                btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
+                btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
+            }
+            btn_CliccaImmagine.IsVisible = true;
+
+
         }
     }
 }
