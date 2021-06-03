@@ -10,7 +10,7 @@
                              Aspect="AspectFit" Clicked="ImageButton_Clicked"></ImageButton>
                 <Button x:Name="btn_CliccaImmagine" Clicked="btn_CliccaImmagine_Clicked" Margin="180" VerticalOptions="Center" 
                         ImageSource="https://cdn.discordapp.com/attachments/847751481078841345/848145606988136468/orata2_1.png"
-                        BackgroundColor="Blue" IsVisible="false"
+                        BackgroundColor="Transparent" IsVisible="false"
                         PropertyChanged="btn_CliccaImmagine_PropertyChanged"/>
             </Grid>
             <Label Text="{Binding StopWatchSecond}" FontSize="Medium" x:Name="lbl_tempoStart" PropertyChanged="lbl_tempoStart_PropertyChanged"></Label>
