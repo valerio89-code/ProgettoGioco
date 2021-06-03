@@ -4,6 +4,12 @@
              x:Class="ProgettoGioco.Gioco2.GiocoSequenza">
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="" 
+                   x:Name="lbl_randomNumber"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   FontSize="Header"
+                   TextColor="Black"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -11,22 +17,78 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="145" />
+                    <RowDefinition Height="145" />
+                    <RowDefinition Height="145" />
+                    <RowDefinition Height="145" />
                 </Grid.RowDefinitions>
-                <Button Text="1" x:Name="btn_uno" Grid.Column="0"  Grid.Row="0" Clicked="btn_uno_Clicked"/>
-                <Button Text="2" x:Name="btn_due" Grid.Column="1"  Grid.Row="0" Clicked="btn_due_Clicked"/>
-                <Button Text="3" x:Name="btn_tre" Grid.Column="2"  Grid.Row="0" Clicked="btn_tre_Clicked"/>
-                <Button Text="4" x:Name="btn_quattro" Grid.Column="0"  Grid.Row="1" Clicked="btn_quattro_Clicked"/>
-                <Button Text="5" x:Name="btn_cinque" Grid.Column="1"  Grid.Row="1" Clicked="btn_cinque_Clicked"/>
-                <Button Text="6" x:Name="btn_sei" Grid.Column="2"  Grid.Row="1" Clicked="btn_sei_Clicked"/>
-                <Button Text="7" x:Name="btn_sette" Grid.Column="0"  Grid.Row="2" Clicked="btn_sette_Clicked" />
-                <Button Text="8" x:Name="btn_otto"  Grid.Column="1"  Grid.Row="2" Clicked="btn_otto_Clicked"/>
-                <Button Text="9" x:Name="btn_nove" Grid.Column="2"  Grid.Row="2" Clicked="btn_nove_Clicked"/>
-                <Button Text="0" x:Name="btn_zero" Grid.Column="1"  Grid.Row="3" Clicked="btn_zero_Clicked"/>
-                <Button Text="Exit" x:Name="btn_exit" Grid.Column="2"  Grid.Row="3" Clicked="btn_exit_Clicked"/>
+                <Button Text="1" 
+                        x:Name="btn_uno" 
+                        Grid.Column="0"  
+                        Grid.Row="0" 
+                        Clicked="btn_Clicked"
+                        FontSize="Header"/>
+                <Button Text="2" 
+                        x:Name="btn_due" 
+                        Grid.Column="1"  
+                        Grid.Row="0" 
+                        Clicked="btn_Clicked"
+                        FontSize="Header"/>
+                <Button Text="3" 
+                        x:Name="btn_tre" 
+                        Grid.Column="2"  
+                        Grid.Row="0" 
+                        Clicked="btn_Clicked"
+                        FontSize="Header"/>
+                <Button Text="4" 
+                        x:Name="btn_quattro" 
+                        Grid.Column="0"  
+                        Grid.Row="1" 
+                        Clicked="btn_Clicked"
+                        FontSize="Header"/>
+                <Button Text="5" 
+                        x:Name="btn_cinque" 
+                        Grid.Column="1"  
+                        Grid.Row="1" 
+                        Clicked="btn_Clicked"
+                        FontSize="Header"/>
+                <Button Text="6" 
+                        x:Name="btn_sei" 
+                        Grid.Column="2"  
+                        Grid.Row="1" 
+                        Clicked="btn_Clicked"
+                        FontSize="Header"/>
+                <Button Text="7" 
+                        x:Name="btn_sette" 
+                        Grid.Column="0"  
+                        Grid.Row="2" 
+                        Clicked="btn_Clicked"
+                        FontSize="Header"/>
+                <Button Text="8" 
+                        x:Name="btn_otto"  
+                        Grid.Column="1"  
+                        Grid.Row="2" 
+                        Clicked="btn_Clicked"
+                        FontSize="Header"/>
+                <Button Text="9" 
+                        x:Name="btn_nove" 
+                        Grid.Column="2"  
+                        Grid.Row="2" 
+                        Clicked="btn_Clicked"
+                        FontSize="Header"/>
+                <Button Text="0" 
+                        x:Name="btn_zero" 
+                        Grid.Column="1"  
+                        Grid.Row="3" 
+                        Clicked="btn_Clicked"
+                        FontSize="Header"/>
+                <Button Text="Exit" 
+                        x:Name="btn_exit" 
+                        Grid.Column="2"  
+                        Grid.Row="3" 
+                        CornerRadius="90"
+                        Clicked="btn_exit_Clicked"
+                        FontSize="Large"/>
             </Grid>
 
         </StackLayout>

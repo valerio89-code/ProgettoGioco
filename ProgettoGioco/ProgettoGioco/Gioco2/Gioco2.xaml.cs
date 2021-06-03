@@ -13,14 +13,17 @@ namespace ProgettoGioco.Gioco2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GiocoSequenza : ContentPage
     {
-        public static Timer timer;
         public int IndiceSequenza { get; set; } = 0;
         public int[] Sequenza { get; set; }
         public int CifreSequenza { get; set; }
-        public GiocoSequenza(int livello)
+        public int NumVite { get; set; }
+        public int Livello { get; set; }
+        public GiocoSequenza(int livello, int vite)
         {
             InitializeComponent();
 
+            NumVite = vite;
+            Livello = livello;
             switch (livello)
             {
                 case 1:
@@ -39,7 +42,8 @@ namespace ProgettoGioco.Gioco2
                     CifreSequenza = 8;
                     break;
 
-                default: CifreSequenza = 9;
+                default:
+                    CifreSequenza = 9;
                     break;
             }
             Sequenza = new int[CifreSequenza];
@@ -48,72 +52,72 @@ namespace ProgettoGioco.Gioco2
                 Random rnd = new Random();
                 Sequenza[i] = rnd.Next(0, 9);
             }
-
-        }
-
-        private void btn_uno_Clicked(object sender, EventArgs e)
-        {
-            if (VerificaInput(1, Sequenza[IndiceSequenza]))
+            foreach (var item in Sequenza)
             {
-                btn_uno.BackgroundColor = Color.Green;
-                timer = new Timer(1000);
-                timer.Enabled = true;
-                btn_uno.BackgroundColor = Color.Default;
+                lbl_randomNumber.Text += $"{item}";
             }
         }
 
-        private void btn_due_Clicked(object sender, EventArgs e)
+        private void btn_Clicked(object sender, EventArgs e)
         {
+            var btn = (Button)sender;
+            var verifica = VerificaInput(int.Parse(btn.Text), Sequenza[IndiceSequenza]);
 
+            btn.BackgroundColor = verifica ? Color.Green : Color.Red;
+
+            var timer = new Timer(1000);
+            timer.Enabled = true;
+
+            btn.BackgroundColor = Color.Default;
+
+            CasiBottone(verifica);
         }
 
-        private void btn_tre_Clicked(object sender, EventArgs e)
+        private async void btn_exit_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PopAsync();
         }
 
-        private void btn_quattro_Clicked(object sender, EventArgs e)
+        private void CasiBottone(bool verifica)
         {
+            var ultimoIndice = CifreSequenza - 1;
 
-        }
+            if (verifica && IndiceSequenza < ultimoIndice)
+                IndiceSequenza++;
+            else if (verifica && IndiceSequenza == ultimoIndice)
+            {
+                lbl_randomNumber.Text = "";
+                lbl_randomNumber.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label));
+                lbl_randomNumber.Text = "Livello completato";
 
-        private void btn_cinque_Clicked(object sender, EventArgs e)
-        {
+                NewLevel();
+            }
+            else
+            {
+                NumVite--;
+                if (NumVite == 0)
+                {
+                    lbl_randomNumber.Text = "";
+                    lbl_randomNumber.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label));
+                    lbl_randomNumber.Text = "Hai perso";
 
-        }
-
-        private void btn_sei_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_sette_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_otto_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_nove_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_zero_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_exit_Clicked(object sender, EventArgs e)
-        {
-
+                    RestartGame();
+                }
+            }
         }
         private bool VerificaInput(int numInserito, int numSequenza)
         {
             return numInserito == numSequenza;
+        }
+
+        private async void NewLevel()
+        {
+            await Navigation.PushAsync(new GiocoSequenza(Livello, NumVite));
+        }
+        private async void RestartGame()
+        {
+
+            await Navigation.PushAsync(new Restart());
         }
     }
 }
