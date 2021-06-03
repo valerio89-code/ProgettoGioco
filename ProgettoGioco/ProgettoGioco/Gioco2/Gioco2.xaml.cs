@@ -75,7 +75,10 @@ namespace ProgettoGioco.Gioco2
 
         private async void btn_exit_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            if (await DisplayAlert("Uscita", "Vuoi uscire?", "Si", "No"))
+            {
+                ResetStack(Livello);
+            }
         }
 
         private void CasiBottone(bool verifica)
@@ -112,12 +115,28 @@ namespace ProgettoGioco.Gioco2
 
         private async void NewLevel()
         {
+            Livello++;
+
             await Navigation.PushAsync(new GiocoSequenza(Livello, NumVite));
         }
         private async void RestartGame()
         {
+            if (await DisplayAlert("Ricomincia", "Vuoi ricominciare la partita?", "Si", "No"))
+            {
+                ResetStack(Livello + 1);
+                await Navigation.PushAsync(new GiocoSequenza(1, 3));
+            }
+            else
+                ResetStack(Livello);
+        }
 
-            await Navigation.PushAsync(new Restart());
+        private async void ResetStack(int numPagine)
+        {
+            for (var counter = 1; counter < numPagine; counter++)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+            }
+            await Navigation.PopAsync();
         }
     }
 }
