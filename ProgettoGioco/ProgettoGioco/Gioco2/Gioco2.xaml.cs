@@ -52,23 +52,27 @@ namespace ProgettoGioco.Gioco2
                 Random rnd = new Random();
                 Sequenza[i] = rnd.Next(0, 9);
             }
-            foreach (var item in Sequenza)
-            {
-                lbl_randomNumber.Text += $"{item}";
-            }
         }
 
-        private void btn_Clicked(object sender, EventArgs e)
+        private void btn_start_Clicked(object sender, EventArgs e)
+        {
+            btn_start.IsVisible = false;
+            gridBottoni.IsVisible = true;
+            Illuminati();
+        }
+
+        private async void btn_Clicked(object sender, EventArgs e)
         {
             var btn = (Button)sender;
             var verifica = VerificaInput(int.Parse(btn.Text), Sequenza[IndiceSequenza]);
 
             btn.BackgroundColor = verifica ? Color.Green : Color.Red;
 
-            var timer = new Timer(1000);
-            timer.Enabled = true;
+            await Task.Delay(500);
 
-            btn.BackgroundColor = Color.Default;
+            btn.BackgroundColor = Color.White;
+
+            lbl_inputNumber.Text += $"{btn.Text}";
 
             CasiBottone(verifica);
         }
@@ -89,9 +93,9 @@ namespace ProgettoGioco.Gioco2
                 IndiceSequenza++;
             else if (verifica && IndiceSequenza == ultimoIndice)
             {
-                lbl_randomNumber.Text = "";
-                lbl_randomNumber.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label));
-                lbl_randomNumber.Text = "Livello completato";
+                lbl_inputNumber.Text = "";
+                lbl_inputNumber.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label));
+                lbl_inputNumber.Text = "Livello completato";
 
                 NewLevel();
             }
@@ -100,9 +104,9 @@ namespace ProgettoGioco.Gioco2
                 NumVite--;
                 if (NumVite == 0)
                 {
-                    lbl_randomNumber.Text = "";
-                    lbl_randomNumber.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label));
-                    lbl_randomNumber.Text = "Hai perso";
+                    lbl_inputNumber.Text = "";
+                    lbl_inputNumber.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label));
+                    lbl_inputNumber.Text = "Hai perso";
 
                     RestartGame();
                 }
@@ -138,5 +142,39 @@ namespace ProgettoGioco.Gioco2
             }
             await Navigation.PopAsync();
         }
+
+        private async void Illuminati()
+        {
+            List<Button> buttons = new List<Button>();
+            buttons.Add(btn_zero);
+            buttons.Add(btn_uno);
+            buttons.Add(btn_due);
+            buttons.Add(btn_tre);
+            buttons.Add(btn_quattro);
+            buttons.Add(btn_cinque);
+            buttons.Add(btn_sei);
+            buttons.Add(btn_sette);
+            buttons.Add(btn_otto);
+            buttons.Add(btn_nove);
+
+
+            foreach (var numeroEstratto in Sequenza)
+            {
+                var btn = buttons.First(x => x.Text == numeroEstratto.ToString());
+                btn.BorderColor = Color.Green;
+
+                await Task.Delay(1000);
+
+                btn.BorderColor = Color.White;
+
+                await Task.Delay(1000);
+            }
+
+            foreach(var button in buttons)
+            {
+                button.IsEnabled = true;
+            }
+        }
+
     }
 }

@@ -4,13 +4,30 @@
              x:Class="ProgettoGioco.Gioco2.GiocoSequenza">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="" 
-                   x:Name="lbl_randomNumber"
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Text="" 
+                   x:Name="lbl_inputNumber"
                    HorizontalOptions="Center"
                    VerticalOptions="Start"
-                   FontSize="Header"
-                   TextColor="Black"/>
-            <Grid>
+                   FontSize="Title"
+                   TextColor="Black"
+                       Grid.Row="0"/>
+                <Button Text="Inizia Livello" 
+                        x:Name="btn_start"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        Clicked="btn_start_Clicked"
+                        Grid.Row="1"/>
+            </Grid>
+            
+            <Grid x:Name="gridBottoni"
+                  IsVisible="false">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -23,63 +40,103 @@
                     <RowDefinition Height="145" />
                 </Grid.RowDefinitions>
                 <Button Text="1" 
+                        IsEnabled="False"
                         x:Name="btn_uno" 
                         Grid.Column="0"  
                         Grid.Row="0" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
                         Clicked="btn_Clicked"
                         FontSize="Header"/>
                 <Button Text="2" 
+                        IsEnabled="False"
                         x:Name="btn_due" 
                         Grid.Column="1"  
                         Grid.Row="0" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
                         Clicked="btn_Clicked"
                         FontSize="Header"/>
                 <Button Text="3" 
+                        IsEnabled="False"
                         x:Name="btn_tre" 
                         Grid.Column="2"  
                         Grid.Row="0" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
                         Clicked="btn_Clicked"
                         FontSize="Header"/>
                 <Button Text="4" 
+                        IsEnabled="False"
                         x:Name="btn_quattro" 
                         Grid.Column="0"  
                         Grid.Row="1" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
                         Clicked="btn_Clicked"
                         FontSize="Header"/>
                 <Button Text="5" 
+                        IsEnabled="False"
                         x:Name="btn_cinque" 
                         Grid.Column="1"  
                         Grid.Row="1" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
                         Clicked="btn_Clicked"
                         FontSize="Header"/>
                 <Button Text="6" 
+                        IsEnabled="False"
                         x:Name="btn_sei" 
                         Grid.Column="2"  
                         Grid.Row="1" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
                         Clicked="btn_Clicked"
                         FontSize="Header"/>
                 <Button Text="7" 
+                        IsEnabled="False"
                         x:Name="btn_sette" 
                         Grid.Column="0"  
                         Grid.Row="2" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
                         Clicked="btn_Clicked"
                         FontSize="Header"/>
                 <Button Text="8" 
+                        IsEnabled="False"
                         x:Name="btn_otto"  
                         Grid.Column="1"  
                         Grid.Row="2" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
                         Clicked="btn_Clicked"
                         FontSize="Header"/>
                 <Button Text="9" 
+                        IsEnabled="False"
                         x:Name="btn_nove" 
                         Grid.Column="2"  
                         Grid.Row="2" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
                         Clicked="btn_Clicked"
                         FontSize="Header"/>
                 <Button Text="0" 
+                        IsEnabled="False"
                         x:Name="btn_zero" 
                         Grid.Column="1"  
                         Grid.Row="3" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
                         Clicked="btn_Clicked"
                         FontSize="Header"/>
                 <Button Text="Exit" 
