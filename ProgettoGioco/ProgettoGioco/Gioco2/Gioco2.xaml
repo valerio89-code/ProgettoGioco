@@ -6,24 +6,70 @@
         <StackLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="75" />
                 </Grid.RowDefinitions>
-                <Label Text="" 
-                   x:Name="lbl_inputNumber"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Start"
-                   FontSize="Title"
-                   TextColor="Black"
+                <Grid Grid.Column="0"
+                      Grid.RowSpan="1">
+                    
+                    <Label Text="Livello"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           TextColor="Black"
+                           FontAttributes="Bold"
                        Grid.Row="0"/>
-                <Button Text="Inizia Livello" 
+                    <Label Text="{Binding Livello}"
+                           TextColor="Red"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           Grid.Row="1"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Label Text=""
+                           x:Name="lbl_inputNumber"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="30"
+                           TextColor="Black"
+                           Grid.Row="0"
+                           Grid.ColumnSpan="3"/>
+                    <Label Text=""
+                           x:Name="lbl_result"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="20"
+                           TextColor="Black"
+                           Grid.Row="1"
+                           Grid.ColumnSpan="3"/>
+                    
+                </Grid>
+                <Button Text="Inizia Livello"
                         x:Name="btn_start"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="CenterAndExpand"
                         Clicked="btn_start_Clicked"
-                        Grid.Row="1"/>
+                        Grid.Row="1"
+                        Grid.Column="1"/>
+                <Grid Grid.Column="2"
+                      Grid.RowSpan="1">
+                    <Label Text="Vite"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Grid.Row="0"/>
+                    <Label Text="{Binding NumVite}"
+                           TextColor="Red"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           Grid.Row="1"/>
+                </Grid>
             </Grid>
             
             <Grid x:Name="gridBottoni"
@@ -34,12 +80,13 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="145" />
-                    <RowDefinition Height="145" />
-                    <RowDefinition Height="145" />
-                    <RowDefinition Height="145" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="150" />
                 </Grid.RowDefinitions>
                 <Button Text="1" 
+                        CornerRadius="90"
                         IsEnabled="False"
                         x:Name="btn_uno" 
                         Grid.Column="0"  
@@ -48,8 +95,10 @@
                         BorderWidth="5"
                         BorderColor="White"
                         Clicked="btn_Clicked"
-                        FontSize="Header"/>
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
                 <Button Text="2" 
+                        CornerRadius="90"
                         IsEnabled="False"
                         x:Name="btn_due" 
                         Grid.Column="1"  
@@ -58,8 +107,10 @@
                         BorderWidth="5"
                         BorderColor="White"
                         Clicked="btn_Clicked"
-                        FontSize="Header"/>
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
                 <Button Text="3" 
+                        CornerRadius="90"
                         IsEnabled="False"
                         x:Name="btn_tre" 
                         Grid.Column="2"  
@@ -68,8 +119,10 @@
                         BorderWidth="5"
                         BorderColor="White"
                         Clicked="btn_Clicked"
-                        FontSize="Header"/>
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
                 <Button Text="4" 
+                        CornerRadius="90"
                         IsEnabled="False"
                         x:Name="btn_quattro" 
                         Grid.Column="0"  
@@ -78,8 +131,10 @@
                         BorderWidth="5"
                         BorderColor="White"
                         Clicked="btn_Clicked"
-                        FontSize="Header"/>
-                <Button Text="5" 
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="5"
+                        CornerRadius="90"
                         IsEnabled="False"
                         x:Name="btn_cinque" 
                         Grid.Column="1"  
@@ -88,8 +143,10 @@
                         BorderWidth="5"
                         BorderColor="White"
                         Clicked="btn_Clicked"
-                        FontSize="Header"/>
-                <Button Text="6" 
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="6"
+                        CornerRadius="90"
                         IsEnabled="False"
                         x:Name="btn_sei" 
                         Grid.Column="2"  
@@ -98,8 +155,10 @@
                         BorderWidth="5"
                         BorderColor="White"
                         Clicked="btn_Clicked"
-                        FontSize="Header"/>
-                <Button Text="7" 
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="7"
+                        CornerRadius="90"
                         IsEnabled="False"
                         x:Name="btn_sette" 
                         Grid.Column="0"  
@@ -108,8 +167,10 @@
                         BorderWidth="5"
                         BorderColor="White"
                         Clicked="btn_Clicked"
-                        FontSize="Header"/>
-                <Button Text="8" 
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="8"
+                        CornerRadius="90"
                         IsEnabled="False"
                         x:Name="btn_otto"  
                         Grid.Column="1"  
@@ -118,8 +179,10 @@
                         BorderWidth="5"
                         BorderColor="White"
                         Clicked="btn_Clicked"
-                        FontSize="Header"/>
-                <Button Text="9" 
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="9"
+                        CornerRadius="90"
                         IsEnabled="False"
                         x:Name="btn_nove" 
                         Grid.Column="2"  
@@ -128,8 +191,10 @@
                         BorderWidth="5"
                         BorderColor="White"
                         Clicked="btn_Clicked"
-                        FontSize="Header"/>
-                <Button Text="0" 
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="0"
+                        CornerRadius="90"
                         IsEnabled="False"
                         x:Name="btn_zero" 
                         Grid.Column="1"  
@@ -138,14 +203,16 @@
                         BorderWidth="5"
                         BorderColor="White"
                         Clicked="btn_Clicked"
-                        FontSize="Header"/>
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
                 <Button Text="Exit" 
                         x:Name="btn_exit" 
                         Grid.Column="2"  
                         Grid.Row="3" 
                         CornerRadius="90"
                         Clicked="btn_exit_Clicked"
-                        FontSize="Large"/>
+                        FontSize="Large"
+                        FontAttributes="Bold"/>
             </Grid>
 
         </StackLayout>
