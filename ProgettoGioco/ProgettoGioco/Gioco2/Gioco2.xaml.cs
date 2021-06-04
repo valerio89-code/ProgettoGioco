@@ -25,7 +25,7 @@ namespace ProgettoGioco.Gioco2
             }
             set
             {
-                if(numVite != value)
+                if (numVite != value)
                 {
                     numVite = value;
                     OnPropertyChanged();
@@ -33,11 +33,13 @@ namespace ProgettoGioco.Gioco2
             }
         }
 
+        private int maxLevel = 5;
         private int livello;
         public int Livello
         {
             get { return livello; }
-            set {
+            set
+            {
                 if (livello != value)
                 {
                     livello = value;
@@ -49,7 +51,9 @@ namespace ProgettoGioco.Gioco2
         {
             InitializeComponent();
 
-            InitializationValues(livello, vite);
+            NavigationPage.SetHasBackButton(this, false);
+
+            InitializeValues(livello, vite);
 
             BindingContext = this;
         }
@@ -59,7 +63,9 @@ namespace ProgettoGioco.Gioco2
             btn_start.IsVisible = false;
             gridBottoni.IsVisible = true;
 
-            ShowSequence();
+            var buttons = ListaBottoni();
+
+            ShowSequence(buttons);
         }
 
         private async void btn_Clicked(object sender, EventArgs e)
@@ -67,47 +73,47 @@ namespace ProgettoGioco.Gioco2
             var btn = (Button)sender;
             var verifica = VerificaInput(int.Parse(btn.Text), Sequenza[IndiceSequenza]);
 
-            btn.BackgroundColor = verifica ? Color.Green : Color.Red;
+            btn.BorderColor = btn.BackgroundColor = verifica ? Color.Green : Color.Red;
 
             await Task.Delay(250);
 
-            btn.BackgroundColor = Color.White;
+            btn.BorderColor = btn.BackgroundColor = Color.White;
 
-            lbl_inputNumber.Text += $"{btn.Text}";
-
-            CasiBottone(verifica);
+            GestioneClick(verifica, btn.Text);
         }
 
         private async void btn_exit_Clicked(object sender, EventArgs e)
         {
             if (await DisplayAlert("Uscita", "Vuoi uscire?", "Si", "No"))
             {
-                var dimStack = Navigation.NavigationStack.Count;
-                ResetStack(dimStack);
+                Exit();
             }
         }
 
-        private void CasiBottone(bool verifica)
+        private void GestioneClick(bool verifica, string numeroInserito)
         {
             var ultimoIndice = CifreSequenza - 1;
 
-            if (verifica && IndiceSequenza < ultimoIndice)
-                IndiceSequenza++;
-            else if (verifica && IndiceSequenza == ultimoIndice)
+            if (verifica)
             {
-                lbl_result.Text = "";
-                lbl_result.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label));
-                lbl_result.Text = "Livello completato";
+                if (IndiceSequenza < ultimoIndice)
+                    IndiceSequenza++;
+                else if (IndiceSequenza == ultimoIndice)
+                {
+                    lbl_result.Text = string.Empty;
+                    lbl_result.Text = "Livello completato";
 
-                NewLevel();
+                    NewLevel();
+                }
+
+                lbl_inputNumber.Text += $"{numeroInserito}";
             }
             else
             {
                 NumVite--;
                 if (NumVite == 0)
                 {
-                    lbl_result.Text = "";
-                    lbl_result.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label));
+                    lbl_result.Text = string.Empty;
                     lbl_result.Text = "Hai perso";
 
                     RestartGame();
@@ -115,32 +121,15 @@ namespace ProgettoGioco.Gioco2
             }
         }
 
-        private void InitializationValues(int livello, int vite)
+        private void InitializeValues(int livello, int vite)
         {
             NumVite = vite;
             Livello = livello;
-            switch (livello)
-            {
-                case 1:
-                    CifreSequenza = 4;
-                    break;
-                case 2:
-                    CifreSequenza = 5;
-                    break;
-                case 3:
-                    CifreSequenza = 6;
-                    break;
-                case 4:
-                    CifreSequenza = 7;
-                    break;
-                case 5:
-                    CifreSequenza = 8;
-                    break;
 
-                default:
-                    CifreSequenza = 9;
-                    break;
-            }
+            var cifre = new int[] { 4, 5, 6, 7, 8 };
+
+            CifreSequenza = cifre[livello - 1];
+
             Sequenza = new int[CifreSequenza];
             for (int i = 0; i < CifreSequenza; i++)
             {
@@ -155,34 +144,45 @@ namespace ProgettoGioco.Gioco2
 
         private async void NewLevel()
         {
+            if (Livello == maxLevel)
+            {
+                //await Navigation.PushAsync(new WinPage());
+                Exit();
+            }
             Livello++;
 
             await Navigation.PushAsync(new GiocoSequenza(Livello, NumVite));
         }
-        private async void ResetStack(int numPagine)
+
+        private void Exit()
         {
-            for (var counter = 1; counter < numPagine; counter++)
+            Navigation.PopToRootAsync();
+        }
+
+        private async void BackToLevelOne()
+        {
+            for (var counter = 1; counter < Livello + 1; counter++)
             {
-                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
             }
+
             await Navigation.PopAsync();
         }
         private async void RestartGame()
         {
             if (await DisplayAlert("Hai perso", "Vuoi ricominciare la partita?", "Si", "No"))
             {
-                ResetStack(Livello + 1);
+                BackToLevelOne();
+
                 await Navigation.PushAsync(new GiocoSequenza(1, 3));
             }
             else
             {
-                ResetStack(Livello);
+                Exit();
             }
         }
-        private async void ShowSequence()
+        private async void ShowSequence(List<Button> buttons)
         {
-            var buttons = ListaBottoni();
-
             foreach (var randomNumber in Sequenza)
             {
                 var btn = buttons.First(x => x.Text == randomNumber.ToString());
@@ -195,6 +195,11 @@ namespace ProgettoGioco.Gioco2
                 await Task.Delay(1000);
             }
 
+            EnableButtons(buttons);
+        }
+
+        private static void EnableButtons(List<Button> buttons)
+        {
             foreach (var button in buttons)
             {
                 button.IsEnabled = true;
