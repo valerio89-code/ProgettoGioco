@@ -40,6 +40,8 @@ namespace ProgettoGioco.Gioco1
         {
             if (lbl_tempoStart.Text == "10")
             {
+                Gioco1.Hit = Hit;
+                Gioco1.Miss = Miss;
                 Navigation.PopAsync();
             }
             btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);

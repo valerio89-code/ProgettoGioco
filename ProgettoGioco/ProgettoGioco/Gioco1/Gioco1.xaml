@@ -6,7 +6,16 @@
         <Grid>
             <Image Source="https://cdn.discordapp.com/attachments/847751481078841345/849208569467371530/1872006.png" Aspect="AspectFill"></Image>
             <Button Text="Start" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="0.5" Padding="45,25,45,25" FontSize="Large" HorizontalOptions="Center" VerticalOptions="End" Clicked="btn_EnterGame_Clicked"/>
-            <Image Source="https://media.discordapp.net/attachments/847751481078841345/848156568217976832/depositphotos_126553416-stock-illustration-illustration-of-sea-bream-removebg-preview__2_-removebg-p.png" HeightRequest="120" Rotation="120" TranslationY="-50" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Image Source="https://media.discordapp.net/attachments/847751481078841345/848156568217976832/depositphotos_126553416-stock-illustration-illustration-of-sea-bream-removebg-preview__2_-removebg-p.png" 
+             HeightRequest="120" Rotation="120" TranslationY="-50" HorizontalOptions="Center" VerticalOptions="Center"/>
+            
+<Label Text="Hit: 0" x:Name="lbl_hit" />
+            
+<Label Text="Miss: 0" x:Name="lbl_miss"/>
+            
+<Label Text="Punteggio: 0" x:Name="lbl_punteggio" />
+            
+<Label Text="Record: 0" x:Name="lbl_record" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
