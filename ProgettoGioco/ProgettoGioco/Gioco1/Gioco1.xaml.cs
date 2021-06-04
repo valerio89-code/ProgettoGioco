@@ -14,18 +14,13 @@ namespace ProgettoGioco.Gioco1
     {
        public static int Hit { get; set; }
        public static int Miss { get; set; }
-        
-
-
-
-
 
         public Gioco1()
         {
             InitializeComponent();
-            lbl_hit.Text = $"Hit: {hit}";
-            lbl_miss.Text = $"Miss: { miss}";
-            lbl_punteggio.Text = $"Punteggio: {hit-miss}";
+            lbl_hit.Text = $"Hit: {Hit}";
+            lbl_miss.Text = $"Miss: {Miss}";
+            lbl_punteggio.Text = $"Punteggio: {Hit-Miss}";
         }
         private async void btn_EnterGame_Clicked(object sender, EventArgs e)
         {
