@@ -22,9 +22,9 @@ namespace ProgettoGioco.Gioco2
             get => lifes;
             set
             {
-                if (Lifes != value)
+                if (lifes != value)
                 {
-                    Lifes = value;
+                    lifes = value;
                     OnPropertyChanged();
                 }
             }
@@ -49,6 +49,7 @@ namespace ProgettoGioco.Gioco2
             InitializeComponent();
 
             NavigationPage.SetHasBackButton(this, false);
+            NavigationPage.SetHasNavigationBar(this, false);
 
             InitializeValues(livello, vite);
 
@@ -59,6 +60,7 @@ namespace ProgettoGioco.Gioco2
         {
             btn_start.IsVisible = false;
             gridBottoni.IsVisible = true;
+            lbl_result.Text = Navigation.NavigationStack.Count.ToString();
 
             ButtonsManager.ShowSequence(GetButtons(), Sequence);
         }
@@ -75,7 +77,7 @@ namespace ProgettoGioco.Gioco2
 
         private async void btn_exit_Clicked(object sender, EventArgs e)
         {
-            if (await DisplayAlert("Uscita", "Vuoi uscire?", "Si", "No")) await Exit();
+            if (await DisplayAlert("Uscita", "Vuoi uscire?", "Si", "No")) { await Exit(); }
         }
 
         private void InitializeValues(int level, int lifes)
@@ -100,19 +102,17 @@ namespace ProgettoGioco.Gioco2
             if (verifica)
             {
                 lbl_inputNumber.Text += enteredNumber;
-                RightChoiceHandler();
+
+                await RightChoiceHandler();
             }
             else
             {
                 Lifes--;
-                if (Lifes == 0)
-                {
-                    await Defeat();
-                }
+                if (Lifes == 0) { await Defeat(); }
             }
         }
 
-        private void RightChoiceHandler()
+        private async Task RightChoiceHandler()
         {
             var lastIndex = SequenceDigits - 1;
 
@@ -122,7 +122,7 @@ namespace ProgettoGioco.Gioco2
             {
                 lbl_result.Text = "Livello completato";
 
-                LevelCompletedHandler();
+                await LevelCompletedHandler();
             }
         }
 
@@ -130,9 +130,8 @@ namespace ProgettoGioco.Gioco2
         {
             lbl_result.Text = "Hai perso";
 
-            if (await DisplayAlert("Hai perso", "Vuoi ricominciare la partita?", "Si", "No"))
-                await RestartGame("lost");
-            else await Exit();
+            if (await DisplayAlert("Hai perso", "Vuoi ricominciare la partita?", "Si", "No")) { await RestartGame(); }
+            else { await Exit(); }
         }
 
         private bool VerifyInput(int enteredNumber, int sequenceNumber)
@@ -140,11 +139,10 @@ namespace ProgettoGioco.Gioco2
             return enteredNumber == sequenceNumber;
         }
 
-        private async void LevelCompletedHandler()
+        private async Task LevelCompletedHandler()
         {
-            if (Level == maxLevel) await Win();
-
-            await NewLevel();
+            if (Level == maxLevel) { await Win(); }
+            else { await NewLevel(); }
         }
 
         private async Task NewLevel()
@@ -155,30 +153,28 @@ namespace ProgettoGioco.Gioco2
 
                 await Navigation.PushAsync(new GiocoSequenza(Level, Lifes));
             }
-            else await Exit();
+            else { await Exit(); }
         }
 
         private async Task Win()
         {
             if (await DisplayAlert("Vittoria", $"Hai completato il gioco,{Environment.NewLine} Vuoi ricominciare?", "Si", "No"))
-                await RestartGame("won");
-            else await Exit();
+            { await RestartGame(); }
+            else { await Exit(); }
         }
 
-        private async Task Exit()
-        {
-            await Navigation.PopToRootAsync();
-        }
+        private async Task Exit() { await Navigation.PopToRootAsync(); }
 
-        private async Task RestartGame(string winLose)
+        private async Task RestartGame()
         {
-            var pagesToRemove = winLose == "won" ? Level : Level + 1;
-            for (var counter = 1; counter < pagesToRemove; counter++)
+            for (var counter = 1; counter < Level; counter++)
+            {
                 Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+            }
+
+            Navigation.InsertPageBefore(new GiocoSequenza(1, 3), Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
 
             await Navigation.PopAsync();
-
-            await Navigation.PushAsync(new GiocoSequenza(1, 3));
         }
 
         private List<Button> GetButtons()
