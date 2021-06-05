@@ -12,10 +12,8 @@ namespace ProgettoGioco.Gioco1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StartGameOne : ContentPage
     {
-        public Stopwatch Tempo { get; set; } = new Stopwatch();
-        public int contTemp = 0;
         public int punteggio = 0;
-        public Stopwatch TempoAcceso { get; set; } = new Stopwatch();
+        public int uscita = 0;
         public Random rnd = new Random();
         public StartGameOne()
         {
@@ -42,13 +40,14 @@ namespace ProgettoGioco.Gioco1
 
         private void lbl_tempoStart_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (lbl_tempoStart.Text == "10")
+            btn_CliccaImmagine.IsVisible = true;
+            btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
+            btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);            
+            if (lbl_tempoStart.Text == "15" && uscita == 0)
             {
                 Navigation.PopAsync();
+                uscita = 1;
             }
-            btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
-            btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
-            btn_CliccaImmagine.IsVisible = true;
             //var numeroRandom = rnd.Next(1,10);
             //var numeroRandom2 = rnd.Next(1,10);
             //if (lbl_tempoStart.Text == "10")
