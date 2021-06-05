@@ -13,35 +13,37 @@ namespace ProgettoGioco.Gioco1
     public partial class StartGameOne : ContentPage
     {
         public Stopwatch Tempo { get; set; } = new Stopwatch();
-        public int Hit = 0;
-        public int Miss = 0;
         public int contTemp = 0;
+        public int punteggio = 0;
         public Stopwatch TempoAcceso { get; set; } = new Stopwatch();
         public Random rnd = new Random();
         public StartGameOne()
         {
             InitializeComponent();
             BindingContext = new StartGameOneViewModel();
-            
         } 
 
         private void btn_CliccaImmagine_Clicked(object sender, EventArgs e)
         {
-            Hit++;
+            punteggio++;
+            lbl_punteggioGame.Text = $"Punteggio: {punteggio}";
             btn_CliccaImmagine.IsVisible = false;
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
-            Miss++;
+            punteggio--;
+            if(punteggio < 0)
+            {
+                punteggio = 0;
+            }
+            lbl_punteggioGame.Text = $"Punteggio: {punteggio}";
         }
 
         private void lbl_tempoStart_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (lbl_tempoStart.Text == "10")
             {
-                Gioco1.Hit = Hit;
-                Gioco1.Miss = Miss;
                 Navigation.PopAsync();
             }
             btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);

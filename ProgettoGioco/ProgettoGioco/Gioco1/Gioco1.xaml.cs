@@ -12,15 +12,9 @@ namespace ProgettoGioco.Gioco1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Gioco1 : ContentPage
     {
-       public static int Hit { get; set; }
-       public static int Miss { get; set; }
-
         public Gioco1()
         {
             InitializeComponent();
-            lbl_hit.Text = $"Hit: {Hit}";
-            lbl_miss.Text = $"Miss: {Miss}";
-            lbl_punteggio.Text = $"Punteggio: {Hit-Miss}";
         }
         private async void btn_EnterGame_Clicked(object sender, EventArgs e)
         {

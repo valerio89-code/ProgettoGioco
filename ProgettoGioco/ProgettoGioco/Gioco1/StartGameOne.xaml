@@ -13,7 +13,9 @@
                         BackgroundColor="Transparent" IsVisible="false"
                         PropertyChanged="btn_CliccaImmagine_PropertyChanged"/>
             </Grid>
-            <Label Text="{Binding StopWatchSecond}" FontSize="Medium" x:Name="lbl_tempoStart" PropertyChanged="lbl_tempoStart_PropertyChanged"></Label>
-        </StackLayout>
+            <Label Text="Secondi:" FontSize="Large" TextColor="Red" TranslationY="85"></Label>
+            <Label Text="{Binding StopWatchSecond}" TextColor="Red"  FontSize="Large" TranslationY="43" TranslationX="106" x:Name="lbl_tempoStart" PropertyChanged="lbl_tempoStart_PropertyChanged"></Label>
+            <Label Text="Punteggio: 0" TextColor="Blue" x:Name="lbl_punteggioGame" FontSize="Large" TranslationX="230"/>
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>
