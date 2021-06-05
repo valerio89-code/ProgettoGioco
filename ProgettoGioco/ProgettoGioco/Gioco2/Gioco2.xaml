@@ -22,7 +22,7 @@
                            TextColor="Black"
                            FontAttributes="Bold"
                        Grid.Row="0"/>
-                    <Label Text="{Binding Livello}"
+                    <Label Text="{Binding Level}"
                            TextColor="Red"
                            HorizontalTextAlignment="Center"
                            FontSize="Large"
@@ -63,7 +63,7 @@
                            FontAttributes="Bold"
                            TextColor="Black"
                            Grid.Row="0"/>
-                    <Label Text="{Binding NumVite}"
+                    <Label Text="{Binding Lifes}"
                            TextColor="Red"
                            HorizontalTextAlignment="Center"
                            FontSize="Large"

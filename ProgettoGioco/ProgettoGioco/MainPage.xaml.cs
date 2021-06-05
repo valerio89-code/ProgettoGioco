@@ -1,10 +1,5 @@
 ﻿using ProgettoGioco.Gioco2;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ProgettoGioco
@@ -25,9 +20,10 @@ namespace ProgettoGioco
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
             //da modificare dal gruppo 2
-            int livello = 1,
-                numVite = 3;
-            await Navigation.PushAsync(new GiocoSequenza(livello, numVite));
+            int level = 1,
+                lifes = 3;
+
+            await Navigation.PushAsync(new GiocoSequenza(level, lifes));
         }
 
         private void Button_Clicked_2(object sender, EventArgs e)
