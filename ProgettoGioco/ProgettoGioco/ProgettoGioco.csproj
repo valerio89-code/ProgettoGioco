@@ -12,15 +12,19 @@
 
   <ItemGroup>
     <None Remove="Gioco2\images\heart.png" />
+    <None Remove="Gioco2\sounds\defeat.mp3" />
     <None Remove="Gioco2\sounds\greenButton.mp3" />
     <None Remove="Gioco2\sounds\levelCompleted.mp3" />
+    <None Remove="Gioco2\sounds\redButton.mp3" />
     <None Remove="Gioco2\sounds\victory.mp3" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Gioco2\images\heart.png" />
+    <EmbeddedResource Include="Gioco2\sounds\defeat.mp3" />
     <EmbeddedResource Include="Gioco2\sounds\greenButton.mp3" />
     <EmbeddedResource Include="Gioco2\sounds\levelCompleted.mp3" />
+    <EmbeddedResource Include="Gioco2\sounds\redButton.mp3" />
     <EmbeddedResource Include="Gioco2\sounds\victory.mp3" />
   </ItemGroup>
 

@@ -28,7 +28,6 @@ namespace ProgettoGioco.Gioco2
                 }
             }
         }
-
         public int[] Sequence { get; set; }
         public int SequenceDigits { get; set; }
         private int lifes;
@@ -76,40 +75,17 @@ namespace ProgettoGioco.Gioco2
             btn_start.IsVisible = false;
             gridBottoni.IsVisible = true;
 
-            int difficultyTime;
-
-            switch (Difficulty)
-            {
-                case "Easy":
-                    difficultyTime = 1500;
-                    break;
-                case "Medium":
-                    difficultyTime = 1000;
-                    break;
-                case "Hard":
-                    difficultyTime = 500;
-                    break;
-                case "Impossible":
-                    difficultyTime = 250;
-                    break;
-                default:
-                    difficultyTime = 1000;
-                    break;
-            }
-
-            ButtonsManager.ShowSequence(GetButtons(), Sequence, difficultyTime);
+            ButtonsManager.ShowSequence(GetButtons(), Sequence, GetDifficultyTime());
         }
 
         private async void btn_Clicked(object sender, EventArgs e)
         {
             var btn = (Button)sender;
-            var verifica = VerifyInput(int.Parse(btn.Text), Sequence[SequenceIndex]);
+            var isRightAnswer = VerifyInput(int.Parse(btn.Text), Sequence[SequenceIndex]);
 
-            await ButtonsManager.ColorButton(btn, verifica);
+            await ButtonsManager.ColorButton(btn, isRightAnswer);
 
-            if (verifica) { PlaySound("greenButton.mp3"); }
-
-            ClickManager(verifica, btn.Text);
+            ClickManager(isRightAnswer, btn.Text);
         }
 
         private async void btn_exit_Clicked(object sender, EventArgs e)
@@ -135,8 +111,16 @@ namespace ProgettoGioco.Gioco2
             }
         }
 
+        private bool VerifyInput(int enteredNumber, int sequenceNumber)
+        {
+            return enteredNumber == sequenceNumber;
+        }
+
         private async void ClickManager(bool verifica, string enteredNumber)
         {
+            string answerSound = verifica ? "greenButton.mp3" : "redButton.mp3";
+            PlaySound(answerSound);
+
             if (verifica)
             {
                 lbl_inputNumber.Text += enteredNumber;
@@ -146,7 +130,12 @@ namespace ProgettoGioco.Gioco2
             else
             {
                 Lifes--;
-                if (Lifes == 0) { await Defeat(); }
+
+                if (Lifes == 0) 
+                {
+                    PlaySound("defeat.mp3");
+                    await Defeat();
+                }
             }
         }
 
@@ -164,25 +153,21 @@ namespace ProgettoGioco.Gioco2
             }
         }
 
-        private bool VerifyInput(int enteredNumber, int sequenceNumber)
+        private async Task Defeat()
         {
-            return enteredNumber == sequenceNumber;
+            lbl_result.Text = "Hai perso";
+
+            if (await DisplayAlert("Hai perso", "Vuoi ricominciare la partita?", "Si", "No")) { await RestartGame(); }
+            else { await Exit(); }
         }
 
         private async Task LevelCompletedHandler()
         {
-            if (Level == maxLevel)
-            {
-                PlaySound("victory.mp3");
+            string winOrNewLevelSound = Level == maxLevel ? "victory.mp3" : "levelCompleted.mp3";
+            PlaySound(winOrNewLevelSound);
 
-                await Win();
-            }
-            else
-            {
-                PlaySound("levelCompleted.mp3");
-
-                await NewLevel();
-            }
+            if (Level == maxLevel) { await Win(); }
+            else { await NewLevel(); }
         }
 
         private async Task Win()
@@ -192,11 +177,14 @@ namespace ProgettoGioco.Gioco2
             else { await Exit(); }
         }
 
-        private async Task Defeat()
+        private async Task NewLevel()
         {
-            lbl_result.Text = "Hai perso";
+            if (await DisplayAlert($"Livello {Level} completato", "Vuoi proseguire al livello successivo?", "Si", "No"))
+            {
+                Level++;
 
-            if (await DisplayAlert("Hai perso", "Vuoi ricominciare la partita?", "Si", "No")) { await RestartGame(); }
+                await Navigation.PushAsync(new GiocoSequenza(Level, Lifes, Difficulty));
+            }
             else { await Exit(); }
         }
 
@@ -212,17 +200,6 @@ namespace ProgettoGioco.Gioco2
             Navigation.InsertPageBefore(new GiocoSequenza(1, 3, Difficulty), Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
 
             await Navigation.PopAsync();
-        }
-
-        private async Task NewLevel()
-        {
-            if (await DisplayAlert($"Livello {Level} completato", "Vuoi proseguire al livello successivo?", "Si", "No"))
-            {
-                Level++;
-
-                await Navigation.PushAsync(new GiocoSequenza(Level, Lifes, Difficulty));
-            }
-            else { await Exit(); }
         }
 
         private List<Button> GetButtons()
@@ -244,6 +221,31 @@ namespace ProgettoGioco.Gioco2
             return buttons;
         }
 
+        private int GetDifficultyTime()
+        {
+            int difficultyTime;
+
+            switch (Difficulty)
+            {
+                case "Easy":
+                    difficultyTime = 1500;
+                    break;
+                case "Medium":
+                    difficultyTime = 1000;
+                    break;
+                case "Hard":
+                    difficultyTime = 500;
+                    break;
+                case "Impossible":
+                    difficultyTime = 250;
+                    break;
+                default:
+                    difficultyTime = 1000;
+                    break;
+            }
+
+            return difficultyTime;
+        }
         private void PlaySound(string audio)
         {
             Player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
