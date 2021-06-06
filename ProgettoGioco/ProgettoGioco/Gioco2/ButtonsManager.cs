@@ -9,18 +9,20 @@ namespace ProgettoGioco.Gioco2
 {
     public static class ButtonsManager
     {
-        public static async void ShowSequence(List<Button> buttons, int[] sequence)
+        public static async void ShowSequence(List<Button> buttons, int[] sequence, int difficulty)
         {
+            await Task.Delay(1000);
+
             foreach (var number in sequence)
             {
                 var btn = buttons.First(x => x.Text == number.ToString());
                 btn.BorderColor = Color.Green;
 
-                await Task.Delay(1000);
+                await Task.Delay(difficulty);
 
                 btn.BorderColor = Color.White;
 
-                await Task.Delay(1000);
+                await Task.Delay(difficulty);
             }
 
             EnableButtons(buttons);

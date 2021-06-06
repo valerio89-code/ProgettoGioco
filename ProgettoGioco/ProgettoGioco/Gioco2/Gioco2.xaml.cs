@@ -14,6 +14,20 @@ namespace ProgettoGioco.Gioco2
     public partial class GiocoSequenza : ContentPage
     {
         public int SequenceIndex { get; set; } = 0;
+        private string difficulty;
+        public string Difficulty
+        {
+            get { return difficulty; }
+            set
+            {
+                if (difficulty != value)
+                {
+                    difficulty = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public int[] Sequence { get; set; }
         public int SequenceDigits { get; set; }
         private int lifes;
@@ -44,14 +58,14 @@ namespace ProgettoGioco.Gioco2
             }
         }
 
-        public GiocoSequenza(int livello, int vite)
+        public GiocoSequenza(int livello, int vite, string difficulty)
         {
             InitializeComponent();
 
             NavigationPage.SetHasBackButton(this, false);
             NavigationPage.SetHasNavigationBar(this, false);
 
-            InitializeValues(livello, vite);
+            InitializeValues(livello, vite, difficulty);
 
             BindingContext = this;
         }
@@ -60,9 +74,29 @@ namespace ProgettoGioco.Gioco2
         {
             btn_start.IsVisible = false;
             gridBottoni.IsVisible = true;
-            lbl_result.Text = Navigation.NavigationStack.Count.ToString();
 
-            ButtonsManager.ShowSequence(GetButtons(), Sequence);
+            int difficultyTime;
+
+            switch (Difficulty)
+            {
+                case "Easy":
+                    difficultyTime = 1500;
+                    break;
+                case "Medium":
+                    difficultyTime = 1000;
+                    break;
+                case "Hard":
+                    difficultyTime = 500;
+                    break;
+                case "Impossible":
+                    difficultyTime = 250;
+                    break;
+                default:
+                    difficultyTime = 1000;
+                    break;
+            }
+
+            ButtonsManager.ShowSequence(GetButtons(), Sequence, difficultyTime);
         }
 
         private async void btn_Clicked(object sender, EventArgs e)
@@ -80,10 +114,11 @@ namespace ProgettoGioco.Gioco2
             if (await DisplayAlert("Uscita", "Vuoi uscire?", "Si", "No")) { await Exit(); }
         }
 
-        private void InitializeValues(int level, int lifes)
+        private void InitializeValues(int level, int lifes, string difficulty)
         {
             Lifes = lifes;
             Level = level;
+            Difficulty = difficulty;
 
             var digits = new int[] { 4, 5, 6, 7, 8 };
 
@@ -126,14 +161,6 @@ namespace ProgettoGioco.Gioco2
             }
         }
 
-        private async Task Defeat()
-        {
-            lbl_result.Text = "Hai perso";
-
-            if (await DisplayAlert("Hai perso", "Vuoi ricominciare la partita?", "Si", "No")) { await RestartGame(); }
-            else { await Exit(); }
-        }
-
         private bool VerifyInput(int enteredNumber, int sequenceNumber)
         {
             return enteredNumber == sequenceNumber;
@@ -145,21 +172,18 @@ namespace ProgettoGioco.Gioco2
             else { await NewLevel(); }
         }
 
-        private async Task NewLevel()
-        {
-            if (await DisplayAlert($"Livello {Level} completato", "Vuoi proseguire al livello successivo?", "Si", "No"))
-            {
-                Level++;
-
-                await Navigation.PushAsync(new GiocoSequenza(Level, Lifes));
-            }
-            else { await Exit(); }
-        }
-
         private async Task Win()
         {
             if (await DisplayAlert("Vittoria", $"Hai completato il gioco,{Environment.NewLine} Vuoi ricominciare?", "Si", "No"))
             { await RestartGame(); }
+            else { await Exit(); }
+        }
+
+        private async Task Defeat()
+        {
+            lbl_result.Text = "Hai perso";
+
+            if (await DisplayAlert("Hai perso", "Vuoi ricominciare la partita?", "Si", "No")) { await RestartGame(); }
             else { await Exit(); }
         }
 
@@ -172,9 +196,20 @@ namespace ProgettoGioco.Gioco2
                 Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
             }
 
-            Navigation.InsertPageBefore(new GiocoSequenza(1, 3), Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+            Navigation.InsertPageBefore(new GiocoSequenza(1, 3, Difficulty), Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
 
             await Navigation.PopAsync();
+        }
+
+        private async Task NewLevel()
+        {
+            if (await DisplayAlert($"Livello {Level} completato", "Vuoi proseguire al livello successivo?", "Si", "No"))
+            {
+                Level++;
+
+                await Navigation.PushAsync(new GiocoSequenza(Level, Lifes, Difficulty));
+            }
+            else { await Exit(); }
         }
 
         private List<Button> GetButtons()

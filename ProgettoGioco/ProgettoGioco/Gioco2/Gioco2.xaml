@@ -12,52 +12,78 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="75" />
+                    <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Column="0"
                       Grid.RowSpan="1">
-                    
-                    <Label Text="Livello"
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid Grid.Column="1"
+                          Grid.Row="0">
+
+                        <Label Text="Level"
                            HorizontalTextAlignment="Center"
                            FontSize="Medium"
                            TextColor="Black"
                            FontAttributes="Bold"
                        Grid.Row="0"/>
-                    <Label Text="{Binding Level}"
+                        <Label Text="{Binding Level}"
                            TextColor="Red"
                            HorizontalTextAlignment="Center"
                            FontSize="Large"
                            FontAttributes="Bold"
                            Grid.Row="1"/>
+                    </Grid>
                 </Grid>
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1"
+                      Grid.Row="0">
+                    <Grid Grid.Column="0">
+
+                        <Label Text="Difficulty"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                       Grid.Row="0"/>
+                        <Label Text="{Binding Difficulty}"
+                           TextColor="Red"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           Grid.Row="1"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Grid.ColumnSpan="3">
                     <Label Text=""
                            x:Name="lbl_inputNumber"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
-                           FontSize="30"
-                           TextColor="Black"
-                           Grid.Row="0"
-                           Grid.ColumnSpan="3"/>
+                           FontSize="20"
+                           TextColor="Green"
+                           Grid.Row="0"/>
                     <Label Text=""
                            x:Name="lbl_result"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
-                           FontSize="20"
+                           FontSize="15"
                            TextColor="Black"
-                           Grid.Row="1"
-                           Grid.ColumnSpan="3"/>
-                    
+                           Grid.Row="1"/>
                 </Grid>
-                <Button Text="Inizia Livello"
+                    <Button Text="Start Level"
                         x:Name="btn_start"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="CenterAndExpand"
                         Clicked="btn_start_Clicked"
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Grid.Column="1"/>
                 <Grid Grid.Column="2"
                       Grid.RowSpan="1">
-                    <Label Text="Vite"
+                    <Label Text="Lifes"
                            HorizontalTextAlignment="Center"
                            FontSize="Medium"
                            FontAttributes="Bold"
@@ -71,7 +97,7 @@
                            Grid.Row="1"/>
                 </Grid>
             </Grid>
-            
+
             <Grid x:Name="gridBottoni"
                   IsVisible="false">
                 <Grid.ColumnDefinitions>
