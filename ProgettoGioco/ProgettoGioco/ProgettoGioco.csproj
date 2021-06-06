@@ -16,7 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Gioco1\Gioco1.xaml">
+    <EmbeddedResource Update="Gioco1\EndGame.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Gioco1\GameOne.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Gioco1\StartGameOne.xaml">
@@ -32,5 +35,11 @@
 
   <ItemGroup>
     <Folder Include="Gioco1\ViewModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Gioco1\GameOne.xaml.cs">
+      <DependentUpon>GameOne.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

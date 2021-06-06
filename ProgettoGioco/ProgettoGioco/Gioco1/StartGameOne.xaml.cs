@@ -45,7 +45,7 @@ namespace ProgettoGioco.Gioco1
             btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);            
             if (lbl_tempoStart.Text == "15" && uscita == 0)
             {
-                Navigation.PopAsync();
+                Navigation.PushAsync(new EndGame(punteggio));
                 uscita = 1;
             }
             //var numeroRandom = rnd.Next(1,10);
