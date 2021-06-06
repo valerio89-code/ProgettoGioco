@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Timers;
 
 namespace ProgettoGioco.Gioco1
 {
@@ -15,10 +16,11 @@ namespace ProgettoGioco.Gioco1
         public int punteggio = 0;
         public int uscita = 0;
         public Random rnd = new Random();
+        public Timer timer;
         public StartGameOne()
         {
             InitializeComponent();
-            BindingContext = new StartGameOneViewModel();
+        BindingContext = new StartGameOneViewModel();
         } 
 
         private void btn_CliccaImmagine_Clicked(object sender, EventArgs e)
@@ -40,37 +42,18 @@ namespace ProgettoGioco.Gioco1
 
         private void lbl_tempoStart_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            btn_CliccaImmagine.IsVisible = true;
-            btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
-            btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);            
-            if (lbl_tempoStart.Text == "15" && uscita == 0)
+            
+            if (lbl_tempoStart.Text == "20" && uscita == 0)
             {
                 Navigation.PushAsync(new EndGame(punteggio));
                 uscita = 1;
             }
-            //var numeroRandom = rnd.Next(1,10);
-            //var numeroRandom2 = rnd.Next(1,10);
-            //if (lbl_tempoStart.Text == "10")
-            //{
-            //    Navigation.PopAsync();
-            //}
-            //if (lbl_tempoStart.Text == numeroRandom.ToString() || lbl_tempoStart.Text == numeroRandom2.ToString())
-            //{
-            //    btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
-            //    btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
-            //    btn_CliccaImmagine.IsVisible = true;
-            //    TempoAcceso.Start();
-            //}
-            //if (TempoAcceso.Elapsed.TotalSeconds >= 0.5)
-            //{
-            //    btn_CliccaImmagine.IsVisible = false;
-            //    TempoAcceso.Stop();
-            //}
         }
-
-        private void btn_CliccaImmagine_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void lbl_Timer_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-
+            btn_CliccaImmagine.IsVisible = true;
+            btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
+            btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
         }
     }
 }

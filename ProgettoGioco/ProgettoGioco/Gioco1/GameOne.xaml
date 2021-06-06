@@ -10,6 +10,7 @@
             <Image Source="https://media.discordapp.net/attachments/847751481078841345/851059568142450718/vignetta-removebg-preview__3_-removebg-preview.png"
                    Scale="0.5" TranslationX="-50" TranslationY="-250"/>
             <Label Text="Buona Fortuna!" TranslationX="105" TranslationY="35" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Difficoltà" />
             <Button Text="Start" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="0.5" Padding="45,25,45,25" FontSize="Large" HorizontalOptions="Center" VerticalOptions="End" Clicked="btn_EnterGame_Clicked"/>
             <Image Source="https://media.discordapp.net/attachments/847751481078841345/848156568217976832/depositphotos_126553416-stock-illustration-illustration-of-sea-bream-removebg-preview__2_-removebg-p.png" 
              HeightRequest="120" Rotation="120" TranslationY="-50" HorizontalOptions="Center" VerticalOptions="Center"/>

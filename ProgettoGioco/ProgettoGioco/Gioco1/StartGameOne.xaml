@@ -6,20 +6,23 @@
         <StackLayout>
             <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <StackLayout>
-                <Image Source="" x:Name="img_Risultato"/>
+                    <Label Text="{Binding StopWatchMillisecond}" IsVisible="False" PropertyChanged="lbl_Timer_PropertyChanged" x:Name="lbl_Timer"/>
+                    <Image Source="" x:Name="img_Risultato"/>
 
-                <Label Text="Secondi:" FontSize="Large" TextColor="Red" VerticalOptions="Start"
+                    <Label Text="Secondi:" FontSize="Large" TextColor="Red" VerticalOptions="Start"
                    HorizontalOptions="Start" TranslationY="-14" TranslationX="0"/>
 
-                <Label Text="{Binding StopWatchSecond}" TextColor="Red"  FontSize="Large"
+                    <Label Text="{Binding StopWatchSecond}" TextColor="Red"  FontSize="Large"
                        x:Name="lbl_tempoStart" PropertyChanged="lbl_tempoStart_PropertyChanged"
                        VerticalOptions="Start" HorizontalOptions="Start" TranslationX="90" TranslationY="-50"/>
 
+
+
                     <Label Text="Punteggio: 0" TextColor="Blue" x:Name="lbl_punteggioGame"
                        FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" TranslationX="275" TranslationY="-85"/>
-                    
+
                 </StackLayout>
-                
+
                 <ImageButton Source="https://cdn.discordapp.com/attachments/847751481078841345/848149537579466762/nuovoscree2.png" 
                              Aspect="AspectFit" Clicked="ImageButton_Clicked"
                              TranslationX="0" TranslationY="15"/>
@@ -27,7 +30,7 @@
                 <Button x:Name="btn_CliccaImmagine" Clicked="btn_CliccaImmagine_Clicked" Margin="180" VerticalOptions="Center" 
                         ImageSource="https://cdn.discordapp.com/attachments/847751481078841345/848145606988136468/orata2_1.png"
                         BackgroundColor="Transparent" IsVisible="false"
-                        PropertyChanged="btn_CliccaImmagine_PropertyChanged"/>
+                        />
 
             </Grid>
         </StackLayout>
