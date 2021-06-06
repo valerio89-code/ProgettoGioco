@@ -13,6 +13,7 @@ namespace ProgettoGioco.Gioco2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GiocoSequenza : ContentPage
     {
+        public Plugin.SimpleAudioPlayer.ISimpleAudioPlayer Player { get; set; }
         public int SequenceIndex { get; set; } = 0;
         private string difficulty;
         public string Difficulty
@@ -106,6 +107,8 @@ namespace ProgettoGioco.Gioco2
 
             await ButtonsManager.ColorButton(btn, verifica);
 
+            if (verifica) { PlaySound("greenButton.mp3"); }
+
             ClickManager(verifica, btn.Text);
         }
 
@@ -168,8 +171,18 @@ namespace ProgettoGioco.Gioco2
 
         private async Task LevelCompletedHandler()
         {
-            if (Level == maxLevel) { await Win(); }
-            else { await NewLevel(); }
+            if (Level == maxLevel)
+            {
+                PlaySound("victory.mp3");
+
+                await Win();
+            }
+            else
+            {
+                PlaySound("levelCompleted.mp3");
+
+                await NewLevel();
+            }
         }
 
         private async Task Win()
@@ -229,6 +242,13 @@ namespace ProgettoGioco.Gioco2
             };
 
             return buttons;
+        }
+
+        private void PlaySound(string audio)
+        {
+            Player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            Player.Load(MediaResourceExtension.GetStream(audio));
+            Player.Play();
         }
     }
 }

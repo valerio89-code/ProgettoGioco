@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProgettoGioco.Gioco2.GiocoSequenza">
+             x:Class="ProgettoGioco.Gioco2.GiocoSequenza"
+             xmlns:local="clr-namespace:ProgettoGioco.Gioco2">
     <ContentPage.Content>
         <StackLayout>
             <Grid>
@@ -83,12 +84,7 @@
                         Grid.Column="1"/>
                 <Grid Grid.Column="2"
                       Grid.RowSpan="1">
-                    <Label Text="Lifes"
-                           HorizontalTextAlignment="Center"
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           TextColor="Black"
-                           Grid.Row="0"/>
+                    <Image Source="{local:MediaResource ProgettoGioco.Gioco2.images.heart.png}"/>
                     <Label Text="{Binding Lifes}"
                            TextColor="Red"
                            HorizontalTextAlignment="Center"
