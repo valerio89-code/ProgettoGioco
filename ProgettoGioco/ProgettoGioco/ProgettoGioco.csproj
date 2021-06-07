@@ -11,6 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Gioco3\Perso.wav" />
+    <EmbeddedResource Include="Gioco3\VincitaFinale.wav" />
+    <EmbeddedResource Include="Gioco3\VincitaLivello.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
@@ -23,6 +30,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Gioco3\Gioco3.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Gioco3\MainPageGioco3.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

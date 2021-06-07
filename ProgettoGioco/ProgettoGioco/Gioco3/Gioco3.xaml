@@ -2,11 +2,145 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProgettoGioco.Gioco3.Gioco3">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="@drawable/home.png"
+                     x:Name="Home"
+                     Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <!-- styles -->
+    <ContentPage.Resources>
+
+        <!-- BACKGROUND -->
+        <Style TargetType="StackLayout" Class="background">
+            <Setter Property="BackgroundColor" Value="#fafafa"/>
+        </Style>
+
+        <!-- HEADER -->
+        <Style TargetType="Frame" Class="header">
+            <Setter Property="BackgroundColor" Value="#00b8a9"/>
+            <Setter Property="Margin" Value="0,-20,0,0"/>
+            <Setter Property="Padding" Value="20,20,20,40"/>
+            <Setter Property="CornerRadius" Value="20"/>
+        </Style>
+
+        <Style TargetType="Label" Class="lblHeader">
+            <Setter Property="TextColor" Value="#242424"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <!-- BODY -->
+
+        <!-- contatore centrale -->
+        <Style TargetType="Label" Class="lblContatore">
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="TextColor" Value="#242424"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Padding" Value="100"/>
+        </Style>
+
+        <!-- button -->
+        <Style TargetType="Button" Class="btnClicca">
+            <Setter Property="Text" Value="Clicca Qua!"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="#242424"/>
+            <Setter Property="BackgroundColor" Value="#f6416c"/>
+            <Setter Property="HeightRequest" Value="90"/>
+            <Setter Property="Margin" Value="20,0,20,0"/>
+            <Setter Property="CornerRadius" Value="50"/>
+        </Style>
+
+        <!-- schermata finale -->
+        <Style TargetType="Frame" Class="frameFinale">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="BorderColor" Value="Transparent"/>
+            <Setter Property="HeightRequest" Value="100"/>
+        </Style>
+
+        <Style TargetType="Button" Class="btnFinale">
+            <Setter Property="BackgroundColor" Value="#f6416c"/>
+            <Setter Property="TextColor" Value="#242424"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10,0,10,0"/>
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+    </ContentPage.Resources>
+
+
+    <!-- STRUTTURA -->
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout StyleClass="background">
+
+            <!-- labels header -->
+            <Frame x:Name="Header"
+                   StyleClass="header" >
+                <StackLayout>
+
+                    <Label x:Name="lbl_Livello" 
+                           StyleClass="lblHeader"
+                           FontSize="36" 
+                           IsVisible="true"/>
+
+                    <Label x:Name="lbl_PunteggioFinale"
+                           StyleClass="lblHeader"
+                           FontSize="24" 
+                           IsVisible="false"/>
+
+                    <Label x:Name="lbl_Sottotitolo" 
+                           StyleClass="lblHeader"
+                           FontSize="16" 
+                           Margin="0,20,0,0"
+                           IsVisible="true"/>
+                </StackLayout>
+            </Frame>
+
+            <!-- messaggio finale -->
+            <Frame x:Name="messaggioFinale" 
+                   StyleClass="frameFinale"
+                   IsVisible="false">
+
+                <StackLayout>
+
+                    <FlexLayout JustifyContent="Center"
+                                AlignItems="Center" >
+
+                        <Button x:Name="btnRigioca"
+                                StyleClass="btnFinale"
+                                Text="Rigioca"
+                                Clicked="btnRigioca_Clicked"/>
+
+                        <Button x:Name="btnMenuPrincipale"
+                                StyleClass="btnFinale"
+                                Text="Torna al Menù Principale"
+                                Clicked="btnMenuPrincipale_Clicked"/>
+
+                    </FlexLayout>
+                </StackLayout>
+            </Frame>
+
+            <Image x:Name="imageTrophy"
+                   Source="trophy.png"
+                   HeightRequest="275"
+                   IsVisible="false"/>
+
+            <!-- label contatore centrale -->
+            <Label x:Name="lbl_clickCounter"
+                   StyleClass="lblContatore"
+                   IsVisible="true"/>
+
+            <!-- button -->
+            <Button x:Name="btnClicca"
+                    StyleClass="btnClicca"
+                    Clicked="Button_Clicked" 
+                    IsVisible="true"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
