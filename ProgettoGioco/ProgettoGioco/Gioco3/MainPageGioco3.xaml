@@ -20,7 +20,7 @@
         </Style>
 
         <Style TargetType="Label" Class="titolo">
-            <Setter Property="Text" Value="Clicca N Volte"/>
+            <Setter Property="Text" Value="Click Faster"/>
             <Setter Property="TextColor" Value="#242424"/>
             <Setter Property="FontSize" Value="36"/>
             <Setter Property="FontAttributes" Value="Bold"/>
@@ -33,14 +33,13 @@
         <Style TargetType="Frame" Class="frameDescrizione">
             <Setter Property="BackgroundColor" Value="#ffde7d"/>
             <Setter Property="BorderColor" Value="Transparent"/>
-            <Setter Property="HeightRequest" Value="150"/>
             <Setter Property="Margin" Value="10,20,10,20"/>
             <Setter Property="CornerRadius" Value="10"/>
         </Style>
 
         <Style TargetType="Label" Class="descrizione">
-            <Setter Property="Text" Value="Descrizione"/>
             <Setter Property="TextColor" Value="#242424"/>
+            <Setter Property="FontSize" Value="Body"/>
         </Style>
 
         <!-- button -->
@@ -66,7 +65,13 @@
         </Frame>
         <!-- descrizione -->
         <Frame StyleClass="frameDescrizione">
-            <Label StyleClass="descrizione" />
+            <Label StyleClass="descrizione">
+                Questo gioco consiste nel premere il bottone il più velocemente possibile cercando di raggiungere l'obiettivo prima dello scadere del tempo.
+
+Il tempo limite per ogni livello è di 5 secondi e più si va avanti più i livelli diventeranno difficili.
+
+Cosa aspetti? Rompi anche tu lo schermo del tuo smartphone oggi stesso!
+            </Label>
         </Frame>
         <!-- button -->
         <Button StyleClass="button" Clicked="Button_Clicked"/>

@@ -14,7 +14,7 @@ namespace ProgettoGioco.Gioco3
         {
             NumeroLivello = $"Livello {numeroLivello}";
             CondizioneVittoria = condizioneVittoria;
-            Descrizione = $"Obbiettivo: premi il bottone {condizioneVittoria} volte nel minor tempo possibile!";
+            Descrizione = $"Premi il bottone {condizioneVittoria} volte nel minor tempo possibile!";
         }
     }
 }
