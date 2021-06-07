@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProgettoGioco.Gioco2.GiocoSequenza"
-             xmlns:local="clr-namespace:ProgettoGioco.Gioco2">
+             xmlns:local="clr-namespace:ProgettoGioco.Gioco2"
+             BackgroundColor="Beige">
     <ContentPage.Content>
         <StackLayout>
             <Grid>
@@ -43,6 +44,10 @@
                 <Grid Grid.Column="1"
                       Grid.Row="0">
                     <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
 
                         <Label Text="Difficulty"
                            HorizontalTextAlignment="Center"
@@ -50,12 +55,15 @@
                            TextColor="Black"
                            FontAttributes="Bold"
                        Grid.Row="0"/>
-                        <Label Text="{Binding Difficulty}"
-                           TextColor="Red"
-                           HorizontalTextAlignment="Center"
-                           FontSize="Large"
-                           FontAttributes="Bold"
-                           Grid.Row="1"/>
+                        <Button Text="{Binding Difficulty}"
+                                TextColor="Red"
+                                x:Name="btn_changeDifficulty"
+                                Clicked="btn_changeDifficulty_Clicked"
+                                BackgroundColor="LightBlue"
+                                FontSize="Large"
+                                FontAttributes="Bold"
+                                CornerRadius="15"
+                                Grid.Row="1"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="1"
@@ -84,13 +92,20 @@
                         Grid.Column="1"/>
                 <Grid Grid.Column="2"
                       Grid.RowSpan="1">
-                    <Image Source="{local:MediaResource ProgettoGioco.Gioco2.images.heart.png}"/>
-                    <Label Text="{Binding Lifes}"
-                           TextColor="Red"
-                           HorizontalTextAlignment="Center"
-                           FontSize="Large"
-                           FontAttributes="Bold"
-                           Grid.Row="1"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Image Source="{local:MediaResource ProgettoGioco.Gioco2.images.heart.png}"
+                               Grid.Column="0"
+                               x:Name="image_heart3"/>
+                        <Image Source="{local:MediaResource ProgettoGioco.Gioco2.images.heart.png}"
+                               Grid.Column="1"
+                               x:Name="image_heart2"/>
+                        <Image Source="{local:MediaResource ProgettoGioco.Gioco2.images.heart.png}"
+                               Grid.Column="2"
+                               x:Name="image_heart1"/>
+                    </Grid>
                 </Grid>
             </Grid>
 

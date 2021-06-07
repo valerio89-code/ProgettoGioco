@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.SimpleAudioPlayer;
 
 namespace ProgettoGioco.Gioco2
 {

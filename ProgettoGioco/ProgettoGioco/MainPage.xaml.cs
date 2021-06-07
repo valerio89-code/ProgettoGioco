@@ -14,7 +14,7 @@ namespace ProgettoGioco
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            grid_difficulties.IsVisible = false;
+            grid_gioco2_difficulties.IsVisible = false;
         }
 
         private void Button_Clicked(object sender, EventArgs e)
@@ -26,7 +26,7 @@ namespace ProgettoGioco
         private void Button_Clicked_1(object sender, EventArgs e)
         {
             //da modificare dal gruppo 2
-            grid_difficulties.IsVisible = !grid_difficulties.IsVisible;
+            grid_gioco2_difficulties.IsVisible = !grid_gioco2_difficulties.IsVisible;
         }
 
         private void Button_Clicked_2(object sender, EventArgs e)

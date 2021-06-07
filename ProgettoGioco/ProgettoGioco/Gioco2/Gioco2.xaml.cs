@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using System.Timers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.SimpleAudioPlayer;
 
 namespace ProgettoGioco.Gioco2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GiocoSequenza : ContentPage
     {
-        public Plugin.SimpleAudioPlayer.ISimpleAudioPlayer Player { get; set; }
+        public ISimpleAudioPlayer Player { get; set; }
         public int SequenceIndex { get; set; } = 0;
         private string difficulty;
         public string Difficulty
@@ -36,11 +37,15 @@ namespace ProgettoGioco.Gioco2
             get => lifes;
             set
             {
-                if (lifes != value)
+                lifes = value;
+
+                if (lifes == 2) { image_heart3.IsVisible = false; }
+                else if (lifes == 1)
                 {
-                    lifes = value;
-                    OnPropertyChanged();
+                    image_heart3.IsVisible = false;
+                    image_heart2.IsVisible = false;
                 }
+                else if (lifes == 0) { image_heart1.IsVisible = false; }
             }
         }
         private int maxLevel = 5;
@@ -76,6 +81,12 @@ namespace ProgettoGioco.Gioco2
             gridBottoni.IsVisible = true;
 
             ButtonsManager.ShowSequence(GetButtons(), Sequence, GetDifficultyTime());
+        }
+
+        private async void btn_changeDifficulty_Clicked(object sender, EventArgs e)
+        {
+            if (await DisplayAlert("Cambia difficoltà", $"Vuoi cambiare difficoltà?{Environment.NewLine} perderai i progressi fatti", "Si", "No"))
+            { await RestartFromPage(new DifficultySelection()); }
         }
 
         private async void btn_Clicked(object sender, EventArgs e)
@@ -131,7 +142,7 @@ namespace ProgettoGioco.Gioco2
             {
                 Lifes--;
 
-                if (Lifes == 0) 
+                if (Lifes == 0)
                 {
                     PlaySound("defeat.mp3");
                     await Defeat();
@@ -157,7 +168,7 @@ namespace ProgettoGioco.Gioco2
         {
             lbl_result.Text = "Hai perso";
 
-            if (await DisplayAlert("Hai perso", "Vuoi ricominciare la partita?", "Si", "No")) { await RestartGame(); }
+            if (await DisplayAlert("Hai perso", "Vuoi ricominciare la partita?", "Si", "No")) { await RestartFromPage(new GiocoSequenza(1, 3, Difficulty)); }
             else { await Exit(); }
         }
 
@@ -173,7 +184,7 @@ namespace ProgettoGioco.Gioco2
         private async Task Win()
         {
             if (await DisplayAlert("Vittoria", $"Hai completato il gioco,{Environment.NewLine} Vuoi ricominciare?", "Si", "No"))
-            { await RestartGame(); }
+            { await RestartFromPage(new GiocoSequenza(1, 3, Difficulty)); }
             else { await Exit(); }
         }
 
@@ -190,16 +201,21 @@ namespace ProgettoGioco.Gioco2
 
         private async Task Exit() { await Navigation.PopToRootAsync(); }
 
-        private async Task RestartGame()
+        private async Task RestartFromPage(Page pagina)
+        {
+            DeleteNavStackPages();
+
+            Navigation.InsertPageBefore(pagina, Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+
+            await Navigation.PopAsync();
+        }
+
+        private void DeleteNavStackPages()
         {
             for (var counter = 1; counter < Level; counter++)
             {
                 Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
             }
-
-            Navigation.InsertPageBefore(new GiocoSequenza(1, 3, Difficulty), Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
-
-            await Navigation.PopAsync();
         }
 
         private List<Button> GetButtons()
@@ -234,10 +250,10 @@ namespace ProgettoGioco.Gioco2
                     difficultyTime = 1000;
                     break;
                 case "Hard":
-                    difficultyTime = 500;
+                    difficultyTime = 250;
                     break;
                 case "Impossible":
-                    difficultyTime = 250;
+                    difficultyTime = 100;
                     break;
                 default:
                     difficultyTime = 1000;
@@ -246,9 +262,10 @@ namespace ProgettoGioco.Gioco2
 
             return difficultyTime;
         }
+
         private void PlaySound(string audio)
         {
-            Player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            Player = CrossSimpleAudioPlayer.Current;
             Player.Load(MediaResourceExtension.GetStream(audio));
             Player.Play();
         }
