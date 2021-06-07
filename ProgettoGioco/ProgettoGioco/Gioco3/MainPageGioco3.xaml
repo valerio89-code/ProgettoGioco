@@ -66,9 +66,9 @@
         <!-- descrizione -->
         <Frame StyleClass="frameDescrizione">
             <Label StyleClass="descrizione">
-                Questo gioco consiste nel premere il bottone il più velocemente possibile cercando di raggiungere l'obiettivo prima dello scadere del tempo.
+                L'obiettivo è premere il bottone il più velocemente possibile prima dello scadere del tempo.
 
-Il tempo limite per ogni livello è di 5 secondi e più si va avanti più i livelli diventeranno difficili.
+Il tempo limite per ogni livello è di 5 secondi.
 
 Cosa aspetti? Rompi anche tu lo schermo del tuo smartphone oggi stesso!
             </Label>
