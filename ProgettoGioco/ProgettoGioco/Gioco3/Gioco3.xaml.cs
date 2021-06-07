@@ -18,12 +18,12 @@ namespace ProgettoGioco.Gioco3
         //livelli
         static readonly Livello Livello1 = new Livello(1, 10);
         static readonly Livello Livello2 = new Livello(2, 20);
-        //static readonly Livello Livello3 = new Livello(3, 30);
-        //static readonly Livello Livello4 = new Livello(4, 40);
-        //static readonly Livello Livello5 = new Livello(5, 50);
+        static readonly Livello Livello3 = new Livello(3, 30);
+        static readonly Livello Livello4 = new Livello(4, 40);
+        static readonly Livello Livello5 = new Livello(5, 50);
 
         //lista livelli
-        readonly List<Livello> Livelli = new List<Livello>() { Livello1, Livello2/*, Livello3, Livello4, Livello5*/ };
+        readonly List<Livello> Livelli = new List<Livello>() { Livello1, Livello2, Livello3, Livello4, Livello5 };
 
         //field necessari per ciclare i livelli
         int position = 0;

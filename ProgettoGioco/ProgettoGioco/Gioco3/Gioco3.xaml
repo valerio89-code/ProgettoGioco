@@ -55,19 +55,16 @@
 
         <!-- schermata finale -->
         <Style TargetType="Frame" Class="frameFinale">
-            <Setter Property="BackgroundColor" Value="Transparent"/>
             <Setter Property="BorderColor" Value="Transparent"/>
-            <Setter Property="HeightRequest" Value="100"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="HeightRequest" Value="90"/>
         </Style>
 
         <Style TargetType="Button" Class="btnFinale">
             <Setter Property="BackgroundColor" Value="#f6416c"/>
             <Setter Property="TextColor" Value="#242424"/>
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="Padding" Value="10,0,10,0"/>
+            <Setter Property="Margin" Value="18,18,0,0"/>
             <Setter Property="CornerRadius" Value="15"/>
-            <Setter Property="VerticalOptions" Value="Center"/>
-            <Setter Property="HorizontalOptions" Value="Center"/>
         </Style>
 
     </ContentPage.Resources>
