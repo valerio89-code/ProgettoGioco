@@ -16,6 +16,18 @@ namespace ProgettoGioco.Gioco2
     {
         public ISimpleAudioPlayer Player { get; set; }
         public int SequenceIndex { get; set; } = 0;
+        private int timer;
+        public int Timer
+        {
+            get => timer;
+            set {
+                if (timer != value)
+                {
+                    timer = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         private string difficulty;
         public string Difficulty
         {
@@ -73,11 +85,21 @@ namespace ProgettoGioco.Gioco2
             InitializeValues(livello, vite, difficulty);
 
             BindingContext = this;
+
+            SequenceSetUpper();
         }
 
-        private void btn_start_Clicked(object sender, EventArgs e)
+        private async void SequenceSetUpper()
         {
-            btn_start.IsVisible = false;
+            Timer = 3;
+            await Task.Delay(1000);
+            Timer = 2;
+            await Task.Delay(1000);
+            Timer = 1;
+            await Task.Delay(1000);
+
+            lbl_raedy.IsVisible = false;
+            lbl_timer.IsVisible = false;
             gridBottoni.IsVisible = true;
 
             ButtonsManager.ShowSequence(GetButtons(), Sequence, GetDifficultyTime());
@@ -85,8 +107,8 @@ namespace ProgettoGioco.Gioco2
 
         private async void btn_changeDifficulty_Clicked(object sender, EventArgs e)
         {
-            if (await DisplayAlert("Cambia difficoltà", $"Vuoi cambiare difficoltà?{Environment.NewLine} perderai i progressi fatti", "Si", "No"))
-            { await RestartFromPage(new DifficultySelection()); }
+            if (await DisplayAlert("Change difficulty", $"Do you want to change difficulty?{Environment.NewLine} you will lose all progress", "Yes", "No"))
+            { await RestartFromPage(new Game2DifficultySelection()); }
         }
 
         private async void btn_Clicked(object sender, EventArgs e)
@@ -101,7 +123,7 @@ namespace ProgettoGioco.Gioco2
 
         private async void btn_exit_Clicked(object sender, EventArgs e)
         {
-            if (await DisplayAlert("Uscita", "Vuoi uscire?", "Si", "No")) { await Exit(); }
+            if (await DisplayAlert("Exit", "Do you want to exit?", "Yes", "No")) { await Exit(); }
         }
 
         private void InitializeValues(int level, int lifes, string difficulty)
@@ -158,7 +180,7 @@ namespace ProgettoGioco.Gioco2
                 SequenceIndex++;
             else if (SequenceIndex == lastIndex)
             {
-                lbl_result.Text = "Livello completato";
+                lbl_result.Text = "Level completed";
 
                 await LevelCompletedHandler();
             }
@@ -166,9 +188,9 @@ namespace ProgettoGioco.Gioco2
 
         private async Task Defeat()
         {
-            lbl_result.Text = "Hai perso";
+            lbl_result.Text = "You lost";
 
-            if (await DisplayAlert("Hai perso", "Vuoi ricominciare la partita?", "Si", "No")) { await RestartFromPage(new GiocoSequenza(1, 3, Difficulty)); }
+            if (await DisplayAlert("You lost", "Would you like to restart?", "Yes", "No")) { await RestartFromPage(new GiocoSequenza(1, 3, Difficulty)); }
             else { await Exit(); }
         }
 
@@ -183,14 +205,14 @@ namespace ProgettoGioco.Gioco2
 
         private async Task Win()
         {
-            if (await DisplayAlert("Vittoria", $"Hai completato il gioco,{Environment.NewLine} Vuoi ricominciare?", "Si", "No"))
+            if (await DisplayAlert("Victory", $"Game completed,{Environment.NewLine} Would you like to restart?", "Yes", "No"))
             { await RestartFromPage(new GiocoSequenza(1, 3, Difficulty)); }
             else { await Exit(); }
         }
 
         private async Task NewLevel()
         {
-            if (await DisplayAlert($"Livello {Level} completato", "Vuoi proseguire al livello successivo?", "Si", "No"))
+            if (await DisplayAlert($"Level {Level} completed", "Proceed to next level?", "Yes", "No"))
             {
                 Level++;
 

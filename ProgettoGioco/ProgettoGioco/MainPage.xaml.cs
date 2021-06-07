@@ -11,38 +11,23 @@ namespace ProgettoGioco
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            grid_gioco2_difficulties.IsVisible = false;
-        }
-
         private void Button_Clicked(object sender, EventArgs e)
         {
             //da modificare dal gruppo 1
             //Navigation.PushAsync(new  )
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private async void Button_Clicked_1(object sender, EventArgs e)
         {
             //da modificare dal gruppo 2
-            grid_gioco2_difficulties.IsVisible = !grid_gioco2_difficulties.IsVisible;
+
+            await Navigation.PushAsync(new Game2DifficultySelection());
         }
 
         private void Button_Clicked_2(object sender, EventArgs e)
         {
             //da modificare dal gruppo 3
             //Navigation.PushAsync(new  )
-        }
-
-        private async void btn_gioco2_difficulty_Clicked(object sender, EventArgs e)
-        {
-            int level = 1,
-                lifes = 3;
-
-            var btn = (Button)sender;
-
-            await Navigation.PushAsync(new GiocoSequenza(level, lifes, btn.Text));
         }
     }
 }

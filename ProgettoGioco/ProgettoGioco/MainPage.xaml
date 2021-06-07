@@ -6,43 +6,6 @@
     <StackLayout>
         <Button Text="Inizia gioco 1" Clicked="Button_Clicked"/>
         <Button Text="Inizia gioco 2" Clicked="Button_Clicked_1"/>
-        <Grid IsVisible="false"
-              x:Name="grid_gioco2_difficulties">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-
-            <Button Text="Easy"
-                    Grid.Column="0"
-                    FontSize="12"
-                    FontAttributes="Bold"
-                    x:Name="btn_easy"
-                    Clicked="btn_gioco2_difficulty_Clicked"/>
-            <Button Text="Medium"
-                    Grid.Column="1"
-                    FontAttributes="Bold"
-                    FontSize="12"
-                    x:Name="btn_medium"
-                    Clicked="btn_gioco2_difficulty_Clicked"/>
-            <Button Text="Hard"
-                    Grid.Column="2"
-                    FontSize="12"
-                    FontAttributes="Bold"
-                    x:Name="btn_hard"
-                    Clicked="btn_gioco2_difficulty_Clicked"/>
-            <Button Text="Impossible"
-                    Grid.Column="3"
-                    FontSize="12"
-                    FontAttributes="Bold"
-                    x:Name="btn_impossible"
-                    Clicked="btn_gioco2_difficulty_Clicked"/>
-        </Grid>
         <Button Text="Inizia gioco 3" Clicked="Button_Clicked_2"/>
 </StackLayout>
 
