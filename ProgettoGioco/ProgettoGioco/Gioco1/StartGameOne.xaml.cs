@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Android.Media;
 
 namespace ProgettoGioco.Gioco1
 {
@@ -15,11 +16,28 @@ namespace ProgettoGioco.Gioco1
         public int punteggio = 0;
         public int uscita = 0;
         public Random rnd = new Random();
+        protected MediaPlayer player;
         public StartGameOne()
         {
             InitializeComponent();
+           
             BindingContext = new StartGameOneViewModel();
-        } 
+        }
+      
+        public void StartPlayer (string FilePath)
+        {
+            if (player == null)
+            {
+                player = new MediaPlayer();
+            }
+            else
+            {
+                player.Reset();
+                player.SetDataSource(FilePath);
+                player.Prepare();
+                player.Start();
+            }
+        }
 
         private void btn_CliccaImmagine_Clicked(object sender, EventArgs e)
         {
