@@ -15,13 +15,16 @@ namespace ProgettoGioco.Gioco1
     {
         public int punteggio = 0;
         public int uscita = 0;
+        int difficoltàSelezionata;
+
         public Random rnd = new Random();
-        public Timer timer;
-        public StartGameOne()
+
+        public StartGameOne(int difficoltà)
         {
             InitializeComponent();
-        BindingContext = new StartGameOneViewModel();
-        } 
+            BindingContext = new StartGameOneViewModel();
+            difficoltàSelezionata = difficoltà;
+        }
 
         private void btn_CliccaImmagine_Clicked(object sender, EventArgs e)
         {
@@ -33,7 +36,7 @@ namespace ProgettoGioco.Gioco1
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
             punteggio--;
-            if(punteggio < 0)
+            if (punteggio < 0)
             {
                 punteggio = 0;
             }
@@ -42,7 +45,6 @@ namespace ProgettoGioco.Gioco1
 
         private void lbl_tempoStart_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            
             if (lbl_tempoStart.Text == "20" && uscita == 0)
             {
                 Navigation.PushAsync(new EndGame(punteggio));
@@ -51,9 +53,47 @@ namespace ProgettoGioco.Gioco1
         }
         private void lbl_Timer_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            btn_CliccaImmagine.IsVisible = true;
-            btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
-            btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
+
+        }
+
+        private void lbl_facile_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (difficoltàSelezionata == 0)
+            {
+                btn_CliccaImmagine.IsVisible = true;
+                btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
+                btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
+            }
+        }
+
+        private void lbl_normale_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (difficoltàSelezionata == 1)
+            {
+                btn_CliccaImmagine.IsVisible = true;
+                btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
+                btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
+            }
+        }
+
+        private void lbl_difficile_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (difficoltàSelezionata == 2)
+            {
+                btn_CliccaImmagine.IsVisible = true;
+                btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
+                btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
+            }
+        }
+
+        private void lbl_impossibile_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (difficoltàSelezionata == 3)
+            {
+                btn_CliccaImmagine.IsVisible = true;
+                btn_CliccaImmagine.TranslationY = rnd.Next(-190, 190);
+                btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
+            }
         }
     }
 }

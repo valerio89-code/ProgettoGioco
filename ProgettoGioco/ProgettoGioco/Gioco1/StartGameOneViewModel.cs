@@ -13,13 +13,14 @@ namespace ProgettoGioco
         public event PropertyChangedEventHandler PropertyChanged;
         public Stopwatch Tempo { get; set; } = new Stopwatch();
         private string stopWatchSeconds;
-        private string stopWatchMilliseconds;
-
-        public string StopWatchMillisecond
-        {
-            get { return stopWatchMilliseconds; }
-            set { stopWatchMilliseconds = value; OnPropertyChanged("StopWatchMillisecond"); }
-        }
+        private string facile;
+        private string normale;
+        private string difficile;
+        private string impossibile;
+        public string Facile { get { return facile; } set { facile = value; OnPropertyChanged("Facile"); } }
+        public string Normale { get { return normale; } set { normale = value; OnPropertyChanged("Normale"); } }
+        public string Difficile { get { return difficile; } set { difficile = value; OnPropertyChanged("Difficile"); } }
+        public string Impossibile { get { return impossibile; } set { impossibile = value; OnPropertyChanged("Impossibile"); } }
 
         public string StopWatchSecond
         {
@@ -37,13 +38,37 @@ namespace ProgettoGioco
         public StartGameOneViewModel()
         {
             Tempo.Start();
-            StopWatchMillisecond = Tempo.Elapsed.Milliseconds.ToString();
-            Device.StartTimer(TimeSpan.FromMilliseconds(400), () =>
+            Facile = Tempo.Elapsed.Seconds.ToString();
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
-                StopWatchMillisecond = Tempo.Elapsed.Milliseconds.ToString();
+                Facile = Tempo.Elapsed.Seconds.ToString();
                 return true;
-            }
-            );
+            });
+
+            Tempo.Start();
+            Normale = Tempo.Elapsed.Milliseconds.ToString();
+            Device.StartTimer(TimeSpan.FromMilliseconds(750), () =>
+            {
+                Normale = Tempo.Elapsed.Milliseconds.ToString();
+                return true;
+            });
+
+            Tempo.Start();
+            Difficile = Tempo.Elapsed.Milliseconds.ToString();
+            Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
+            {
+                Difficile = Tempo.Elapsed.Milliseconds.ToString();
+                return true;
+            });
+
+            Tempo.Start();
+            Impossibile = Tempo.Elapsed.Milliseconds.ToString();
+            Device.StartTimer(TimeSpan.FromMilliseconds(250), () =>
+            {
+                Impossibile = Tempo.Elapsed.Milliseconds.ToString();
+                return true;
+            });
+
             StopWatchSecond = Tempo.Elapsed.Seconds.ToString();
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {

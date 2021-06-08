@@ -6,7 +6,10 @@
         <StackLayout>
             <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <StackLayout>
-                    <Label Text="{Binding StopWatchMillisecond}" IsVisible="False" PropertyChanged="lbl_Timer_PropertyChanged" x:Name="lbl_Timer"/>
+                    <Label Text="{Binding Facile}" IsVisible="False" PropertyChanged="lbl_facile_PropertyChanged"  x:Name="lbl_facile"/>
+                    <Label Text="{Binding Normale}" IsVisible="False" PropertyChanged="lbl_normale_PropertyChanged"  x:Name="lbl_normale"/>
+                    <Label Text="{Binding Difficile}" IsVisible="False" PropertyChanged="lbl_difficile_PropertyChanged"  x:Name="lbl_difficile"/>
+                    <Label Text="{Binding Impossibile}" IsVisible="False" PropertyChanged="lbl_impossibile_PropertyChanged"  x:Name="lbl_impossibile"/>
                     <Image Source="" x:Name="img_Risultato"/>
 
                     <Label Text="Secondi:" FontSize="Large" TextColor="Red" VerticalOptions="Start"
