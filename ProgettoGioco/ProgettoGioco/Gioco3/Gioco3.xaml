@@ -39,7 +39,7 @@
             <Setter Property="FontSize" Value="50"/>
             <Setter Property="TextColor" Value="#242424"/>
             <Setter Property="HorizontalOptions" Value="Center"/>
-            <Setter Property="Padding" Value="100"/>
+            <Setter Property="Padding" Value="125"/>
         </Style>
 
         <!-- button -->
@@ -57,13 +57,15 @@
         <Style TargetType="Frame" Class="frameFinale">
             <Setter Property="BorderColor" Value="Transparent"/>
             <Setter Property="BackgroundColor" Value="Transparent"/>
-            <Setter Property="HeightRequest" Value="90"/>
+            <Setter Property="HeightRequest" Value="125"/>
         </Style>
 
         <Style TargetType="Button" Class="btnFinale">
             <Setter Property="BackgroundColor" Value="#f6416c"/>
             <Setter Property="TextColor" Value="#242424"/>
-            <Setter Property="Margin" Value="18,18,0,0"/>
+            <Setter Property="Margin" Value="10,27,10,0"/>
+            <Setter Property="Padding" Value="10,0"/>
+
             <Setter Property="CornerRadius" Value="15"/>
         </Style>
 
