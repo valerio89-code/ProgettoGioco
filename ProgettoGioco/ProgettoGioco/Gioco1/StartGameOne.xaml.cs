@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Timers;
+using Android.Media;
 
 namespace ProgettoGioco.Gioco1
 {
@@ -18,24 +19,54 @@ namespace ProgettoGioco.Gioco1
         int difficoltàSelezionata;
 
         public Random rnd = new Random();
+        public MediaPlayer player;
+        public void StartPlayer(string FilePath)
+        {
+            if (player == null)
+            {
+                player = new MediaPlayer();
+            }
+            else
+            {
+                player.Reset();
+                player.SetDataSource(@"C:\Users\Lenovo\Source\Repos\ProgettoGioco2\ProgettoGioco\ProgettoGioco\Gioco1\Canzoni\canzone 2 app.mp3");
+                player.Prepare();
+                player.Start();
+            }
+        }
+
+
 
         public StartGameOne(int difficoltà)
         {
             InitializeComponent();
            
+
             BindingContext = new StartGameOneViewModel();
             difficoltàSelezionata = difficoltà;
+           
+
         }
 
         private void btn_CliccaImmagine_Clicked(object sender, EventArgs e)
         {
+            player.Reset();
+            player.SetDataSource(@"C:\Users\Lenovo\Source\Repos\ProgettoGioco2\ProgettoGioco\ProgettoGioco\Gioco1\Canzoni\hit.mp3");
+            player.Prepare();
+            player.Start();
             punteggio++;
             lbl_punteggioGame.Text = $"Punteggio: {punteggio}";
             btn_CliccaImmagine.IsVisible = false;
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)
+
         {
+            player.Reset();
+            player.SetDataSource(@"C:\Users\Lenovo\Source\Repos\ProgettoGioco2\ProgettoGioco\ProgettoGioco\Gioco1\Canzoni\miss.mp3");
+            player.Prepare();
+            player.Start();
+
             punteggio--;
             if (punteggio < 0)
             {
