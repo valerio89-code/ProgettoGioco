@@ -21,11 +21,8 @@
                 <Label FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="Punteggio:" VerticalOptions="End"/>
                 <Label FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="0" x:Name="lbl_punteggio" VerticalOptions="End" TranslationX="110" TranslationY="1"/>
 
-                <Label TranslationX="290" FontAttributes="Bold" TranslationY="0" FontSize="Large" TextColor="Black" Text="Record:" VerticalOptions="End"/>
-                <Label FontSize="Large" FontAttributes="Bold"  TextColor="Black" Text="0" x:Name="lbl_record" VerticalOptions="End" TranslationX="370" TranslationY="0"/>  
 
-            
-            <Button VerticalOptions="Center" HorizontalOptions="Center" Padding="107,0,107,0"
+                <Button VerticalOptions="Center" HorizontalOptions="Center" Padding="107,0,107,0"
                     Text="Rigioca" FontAttributes="Bold" x:Name="btn_rigioca" TextColor="White"
                     TranslationX="95" TranslationY="-45" Clicked="btn_rigioca_Clicked" BackgroundColor="Transparent"/>
                 

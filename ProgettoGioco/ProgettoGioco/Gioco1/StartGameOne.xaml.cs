@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Timers;
 using Android.Media;
+using System.Reflection;
+using Stream = System.IO.Stream;
 
 namespace ProgettoGioco.Gioco1
 {
@@ -17,56 +18,41 @@ namespace ProgettoGioco.Gioco1
         public int punteggio = 0;
         public int uscita = 0;
         int difficoltàSelezionata;
+        public Plugin.SimpleAudioPlayer.ISimpleAudioPlayer Player { get; set; }
 
         public Random rnd = new Random();
         public MediaPlayer player;
-        public void StartPlayer(string FilePath)
-        {
-            if (player == null)
-            {
-                player = new MediaPlayer();
-            }
-            else
-            {
-                player.Reset();
-                player.SetDataSource(@"C:\Users\Lenovo\Source\Repos\ProgettoGioco2\ProgettoGioco\ProgettoGioco\Gioco1\Canzoni\canzone 2 app.mp3");
-                player.Prepare();
-                player.Start();
-            }
-        }
-
-
-
         public StartGameOne(int difficoltà)
         {
             InitializeComponent();
-           
-
             BindingContext = new StartGameOneViewModel();
             difficoltàSelezionata = difficoltà;
-           
-
+            Player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            Player.Load(GetStream("canzone 2 app.mp3"));
+            Player.Play();
         }
 
         private void btn_CliccaImmagine_Clicked(object sender, EventArgs e)
         {
-            player.Reset();
-            player.SetDataSource(@"C:\Users\Lenovo\Source\Repos\ProgettoGioco2\ProgettoGioco\ProgettoGioco\Gioco1\Canzoni\hit.mp3");
-            player.Prepare();
-            player.Start();
+            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            player.Load(GetStream("hit.mp3"));
+            player.Play();
             punteggio++;
             lbl_punteggioGame.Text = $"Punteggio: {punteggio}";
             btn_CliccaImmagine.IsVisible = false;
         }
+        private Stream GetStream(string fileName)
+        {
+            var assembry = typeof(App).GetTypeInfo().Assembly;
+            var stream = assembry.GetManifestResourceStream($"ProgettoGioco.Gioco1.Canzoni.{fileName}");
+            return stream;
+        }
 
         private void ImageButton_Clicked(object sender, EventArgs e)
-
         {
-            player.Reset();
-            player.SetDataSource(@"C:\Users\Lenovo\Source\Repos\ProgettoGioco2\ProgettoGioco\ProgettoGioco\Gioco1\Canzoni\miss.mp3");
-            player.Prepare();
-            player.Start();
-
+            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            player.Load(GetStream("miss.mp3"));
+            player.Play();
             punteggio--;
             if (punteggio < 0)
             {
@@ -81,6 +67,7 @@ namespace ProgettoGioco.Gioco1
             {
                 Navigation.PushAsync(new EndGame(punteggio,difficoltàSelezionata));
                 uscita = 1;
+                //Player.Stop();
             }
         }
         private void lbl_Timer_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

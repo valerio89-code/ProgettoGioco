@@ -18,9 +18,7 @@
                     <Label Text="{Binding StopWatchSecond}" TextColor="Red"  FontSize="Large"
                        x:Name="lbl_tempoStart" PropertyChanged="lbl_tempoStart_PropertyChanged"
                        VerticalOptions="Start" HorizontalOptions="Start" TranslationX="90" TranslationY="-50"/>
-
-
-
+                    
                     <Label Text="Punteggio: 0" TextColor="Blue" x:Name="lbl_punteggioGame"
                        FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" TranslationX="275" TranslationY="-85"/>
 

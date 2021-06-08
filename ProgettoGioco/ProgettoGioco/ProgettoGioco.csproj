@@ -11,28 +11,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Gioco1\canzone 3 appù.mp3" />
-    <None Remove="Gioco1\Canzoni\canzone 2 app.mp3" />
-    <None Remove="Gioco1\Canzoni\canzone 4 app.mp3" />
-    <None Remove="Gioco1\Canzoni\canzone 5 app.mp3" />
-    <None Remove="Gioco1\Canzoni\canzone 6 app.mp3" />
-    <None Remove="Gioco1\Canzoni\canzone app.mp3" />
-    <None Remove="Gioco1\Canzoni\hit.mp3" />
-    <None Remove="Gioco1\Canzoni\miss.mp3" />
+    <None Remove="Gioco1\Canzoni\J-Trick - Bouncin %28Original Mix%29.mp3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Gioco1\Canzoni\canzone 3 appù.mp3" />
-    <Content Include="Gioco1\Canzoni\canzone 2 app.mp3" />
-    <Content Include="Gioco1\Canzoni\canzone 4 app.mp3" />
-    <Content Include="Gioco1\Canzoni\canzone 5 app.mp3" />
-    <Content Include="Gioco1\Canzoni\canzone 6 app.mp3" />
-    <Content Include="Gioco1\Canzoni\canzone app.mp3" />
-    <Content Include="Gioco1\Canzoni\hit.mp3" />
-    <Content Include="Gioco1\Canzoni\miss.mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\canzone 3 appù.mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\canzone 4 app.mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\canzone 5 app.mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\canzone 2 app.mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\canzone 6 app.mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\canzone app.mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\hit.mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\J-Trick - Bouncin (Original Mix).mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\miss.mp3" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>

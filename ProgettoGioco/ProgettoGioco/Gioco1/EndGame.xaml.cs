@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,8 +14,6 @@ namespace ProgettoGioco.Gioco1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EndGame : ContentPage
     {
-        public int Record { get; set; }
-        public int RecordTemp { get; set; } = 0;
         public int difficoltà;
         public EndGame(int punteggio,int difficoltàSeleionata)
         {
@@ -54,19 +54,16 @@ namespace ProgettoGioco.Gioco1
                 else if (punteggio < 4)
                     img_lose.IsVisible = true;
             }
-            RecordTemp = Convert.ToInt32(lbl_record.Text);
-            lbl_punteggio.Text = punteggio.ToString();
-            lbl_record.Text = Record.ToString();            
-            if (RecordTemp < punteggio)
-            {
-                lbl_record.Text = punteggio.ToString();
-            }
         }
-
+        private Stream GetStream(string fileName)
+        {
+            var assembry = typeof(App).GetTypeInfo().Assembly;
+            var stream = assembry.GetManifestResourceStream($"ProgettoGioco.Gioco1.Canzoni.{fileName}");
+            return stream;
+        }
         private void btn_rigioca_Clicked(object sender, EventArgs e)
         {
             lbl_punteggio.Text = "0";
-            Record = RecordTemp;
             Navigation.PopAsync();
             Navigation.PopAsync();
         }
@@ -74,7 +71,6 @@ namespace ProgettoGioco.Gioco1
         private void btn_esci_Clicked(object sender, EventArgs e)
         {
             lbl_punteggio.Text = "0";
-            Record = RecordTemp;
             Navigation.PopAsync();
             Navigation.PopAsync();
             Navigation.PopAsync();
