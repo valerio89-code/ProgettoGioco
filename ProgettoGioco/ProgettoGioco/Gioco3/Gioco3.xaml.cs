@@ -19,8 +19,8 @@ namespace ProgettoGioco.Gioco3
         static readonly Livello Livello1 = new Livello(1, 10);
         static readonly Livello Livello2 = new Livello(2, 20);
         static readonly Livello Livello3 = new Livello(3, 30);
-        static readonly Livello Livello4 = new Livello(4, 50);
-        static readonly Livello Livello5 = new Livello(5, 70);
+        static readonly Livello Livello4 = new Livello(4, 45);
+        static readonly Livello Livello5 = new Livello(5, 60);
 
         //lista livelli
         readonly List<Livello> Livelli = new List<Livello>() { Livello1, Livello2, Livello3, Livello4, Livello5 };
