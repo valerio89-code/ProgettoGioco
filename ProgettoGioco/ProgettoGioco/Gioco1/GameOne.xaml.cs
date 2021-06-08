@@ -15,22 +15,18 @@ namespace ProgettoGioco.Gioco1
     public partial class Gioco1 : ContentPage
     {
         public int difficoltà = 0;
-        public Plugin.SimpleAudioPlayer.ISimpleAudioPlayer Player { get; set; }
+
         public Gioco1()
         {
             InitializeComponent();
-            Player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-            Player.Load(GetStream("canzone 3 appù.mp3"));
-            Player.Play();
+
         }
-        private Stream GetStream(string fileName)
+
+        private void btn_EnterGame_Clicked(object sender, EventArgs e)
         {
-            var assembry = typeof(App).GetTypeInfo().Assembly;
-            var stream = assembry.GetManifestResourceStream($"ProgettoGioco.Gioco1.Canzoni.{fileName}");
-            return stream;
-        }
-        private async void btn_EnterGame_Clicked(object sender, EventArgs e)
-        {
+           var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            player.Load(GetStream("Start.mp3"));
+            player.Play();
             if (rdbn_normale.IsChecked)
             {
                 difficoltà = 1;
@@ -43,9 +39,14 @@ namespace ProgettoGioco.Gioco1
             {
                 difficoltà = 3;
             }
-            Player.Stop();
-            await Navigation.PushAsync(new StartGameOne(difficoltà));
-            
+            Navigation.PushAsync(new StartGameOne(difficoltà));
+
+        }
+        private Stream GetStream(string fileName)
+        {
+            var assembry = typeof(App).GetTypeInfo().Assembly;
+            var stream = assembry.GetManifestResourceStream($"ProgettoGioco.Gioco1.Canzoni.{fileName}");
+            return stream;
         }
     }
 }

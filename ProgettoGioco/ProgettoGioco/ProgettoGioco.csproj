@@ -11,19 +11,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Gioco1\Canzoni\J-Trick - Bouncin %28Original Mix%29.mp3" />
+    <None Remove="Gioco1\Canzoni\Lose.mp3" />
+    <None Remove="Gioco1\Canzoni\Start.mp3" />
+    <None Remove="Gioco1\Canzoni\Win.mp3" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Gioco1\Canzoni\canzone 3 appù.mp3" />
-    <EmbeddedResource Include="Gioco1\Canzoni\canzone 4 app.mp3" />
-    <EmbeddedResource Include="Gioco1\Canzoni\canzone 5 app.mp3" />
-    <EmbeddedResource Include="Gioco1\Canzoni\canzone 2 app.mp3" />
-    <EmbeddedResource Include="Gioco1\Canzoni\canzone 6 app.mp3" />
-    <EmbeddedResource Include="Gioco1\Canzoni\canzone app.mp3" />
     <EmbeddedResource Include="Gioco1\Canzoni\hit.mp3" />
-    <EmbeddedResource Include="Gioco1\Canzoni\J-Trick - Bouncin (Original Mix).mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\Lose.mp3" />
     <EmbeddedResource Include="Gioco1\Canzoni\miss.mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\Start.mp3" />
+    <EmbeddedResource Include="Gioco1\Canzoni\Win.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,10 +46,6 @@
     <EmbeddedResource Update="Gioco3\Gioco3.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Gioco1\ViewModel\" />
   </ItemGroup>
 
   <ItemGroup>

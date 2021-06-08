@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Android.Media;
 using System.Reflection;
 using Stream = System.IO.Stream;
 
@@ -18,18 +17,13 @@ namespace ProgettoGioco.Gioco1
         public int punteggio = 0;
         public int uscita = 0;
         int difficoltàSelezionata;
-        public Plugin.SimpleAudioPlayer.ISimpleAudioPlayer Player { get; set; }
 
         public Random rnd = new Random();
-        public MediaPlayer player;
         public StartGameOne(int difficoltà)
         {
             InitializeComponent();
             BindingContext = new StartGameOneViewModel();
             difficoltàSelezionata = difficoltà;
-            Player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-            Player.Load(GetStream("canzone 2 app.mp3"));
-            Player.Play();
         }
 
         private void btn_CliccaImmagine_Clicked(object sender, EventArgs e)
