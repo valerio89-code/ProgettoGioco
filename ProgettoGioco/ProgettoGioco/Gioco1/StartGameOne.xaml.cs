@@ -47,7 +47,7 @@ namespace ProgettoGioco.Gioco1
         {
             if (lbl_tempoStart.Text == "20" && uscita == 0)
             {
-                Navigation.PushAsync(new EndGame(punteggio));
+                Navigation.PushAsync(new EndGame(punteggio,difficoltàSelezionata));
                 uscita = 1;
             }
         }

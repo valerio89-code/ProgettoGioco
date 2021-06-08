@@ -15,6 +15,9 @@
                 <Image Source="https://media.discordapp.net/attachments/847751481078841345/851051669218263050/pesce_indica-removebg-preview.png"
                        HorizontalOptions="Center" VerticalOptions="Center" Scale="1.1" TranslationX="145" TranslationY="15"/>
 
+                <Image Scale="0.5" x:Name="img_win" IsVisible="false" TranslationX="-100" TranslationY="150" Source="https://cdn.discordapp.com/attachments/847751481078841345/848152659956858920/JazgFgLzHnbrla4B-ON9prC_d8NRQaUvU7fO8GQwtBQIQQ5BBIHTbBGQUQNikHx6hj_7K-bTF203_K_xJZGGAH5A3OqIfYEy.png"></Image>
+                <Image Scale="0.5" x:Name="img_lose" IsVisible="false" TranslationX="100" TranslationY="150" Source="https://cdn.discordapp.com/attachments/847751481078841345/848847127936368650/DVwsEMzREjwuMiwWzq49PVprlU0WzRjmiysc1Z5gsy-Llm7swth9CVDvZzdmNg-fr9dVijjvCnfkkiEQYqopleWxPQy-kIJ.png"></Image>
+
                 <Label FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="Punteggio:" VerticalOptions="End"/>
                 <Label FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="0" x:Name="lbl_punteggio" VerticalOptions="End" TranslationX="110" TranslationY="1"/>
 
