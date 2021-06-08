@@ -14,9 +14,46 @@ namespace ProgettoGioco.Gioco1
     {
         public int Record { get; set; }
         public int RecordTemp { get; set; } = 0;
-        public EndGame(int punteggio)
+        public int difficoltà;
+        public EndGame(int punteggio,int difficoltàSeleionata)
         {
             InitializeComponent();
+            if (difficoltàSeleionata == 0)
+            {
+                if (punteggio >= 15)
+                {
+                    img_win.IsVisible = true;
+                }
+                else if(punteggio < 15)
+                    img_lose.IsVisible = true;
+            }
+            else if(difficoltàSeleionata == 1)
+            {
+                if(punteggio >= 10)
+                {
+                    img_win.IsVisible = true;
+                }
+                else if (punteggio < 10)
+                    img_lose.IsVisible = true;
+            }
+            else if (difficoltàSeleionata == 2)
+            {
+                if (punteggio >= 7)
+                {
+                    img_win.IsVisible = true;
+                }
+                else if (punteggio < 7)
+                    img_lose.IsVisible = true;
+            }
+            else if (difficoltàSeleionata == 3)
+            {
+                if (punteggio >= 4)
+                {
+                    img_win.IsVisible = true;
+                }
+                else if (punteggio < 4)
+                    img_lose.IsVisible = true;
+            }
             RecordTemp = Convert.ToInt32(lbl_record.Text);
             lbl_punteggio.Text = punteggio.ToString();
             lbl_record.Text = Record.ToString();            
