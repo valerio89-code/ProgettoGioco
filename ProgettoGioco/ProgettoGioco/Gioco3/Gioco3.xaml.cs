@@ -96,7 +96,7 @@ namespace ProgettoGioco.Gioco3
         {
             PlaySound("VincitaFinale.wav");
             timerGioco.Stop();
-            await ShowMessage("Hai Vinto!", $"Hai superato l'ultimo livello in {timerLivello.Elapsed.Seconds},{timerLivello.Elapsed.Milliseconds} secondi", "Vai alla pagina finale", " ");
+            await ShowMessage("Hai Vinto!", $"Hai superato l'ultimo livello in {timerLivello.Elapsed.Seconds},{timerLivello.Elapsed.Milliseconds} secondi", "Continua", " ");
             ShowFinalPageLayout();
         }
 
