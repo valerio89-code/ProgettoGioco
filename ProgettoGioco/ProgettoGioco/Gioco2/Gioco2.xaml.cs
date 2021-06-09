@@ -108,7 +108,7 @@ namespace ProgettoGioco.Gioco2
         private async void btn_changeDifficulty_Clicked(object sender, EventArgs e)
         {
             if (await DisplayAlert("Change difficulty", $"Do you want to change difficulty?{Environment.NewLine} you will lose all progress", "Yes", "No"))
-            { await RestartFromPage(new Game2DifficultySelection()); }
+            { await RestartFromPage(new Game2DifficultySelection(), 1); }
         }
 
         private async void btn_Clicked(object sender, EventArgs e)
@@ -190,7 +190,7 @@ namespace ProgettoGioco.Gioco2
         {
             lbl_result.Text = "You lost";
 
-            if (await DisplayAlert("You lost", "Would you like to restart?", "Yes", "No")) { await RestartFromPage(new GiocoSequenza(1, 3, Difficulty)); }
+            if (await DisplayAlert("You lost", "Would you like to restart?", "Yes", "No")) { await RestartFromPage(new GiocoSequenza(1, 3, Difficulty), 0); }
             else { await Exit(); }
         }
 
@@ -206,7 +206,7 @@ namespace ProgettoGioco.Gioco2
         private async Task Win()
         {
             if (await DisplayAlert("Victory", $"Game completed,{Environment.NewLine} Would you like to restart?", "Yes", "No"))
-            { await RestartFromPage(new GiocoSequenza(1, 3, Difficulty)); }
+            { await RestartFromPage(new GiocoSequenza(1, 3, Difficulty), 0); }
             else { await Exit(); }
         }
 
@@ -223,18 +223,18 @@ namespace ProgettoGioco.Gioco2
 
         private async Task Exit() { await Navigation.PopToRootAsync(); }
 
-        private async Task RestartFromPage(Page pagina)
+        private async Task RestartFromPage(Page pagina, int aggiuntePerPagina)
         {
-            DeleteNavStackPages();
+            DeleteNavStackPages(aggiuntePerPagina);
 
             Navigation.InsertPageBefore(pagina, Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
 
             await Navigation.PopAsync();
         }
 
-        private void DeleteNavStackPages()
+        private void DeleteNavStackPages(int aggiuntePerPagina)
         {
-            for (var counter = 1; counter < Level; counter++)
+            for (var counter = 1; counter < Level + aggiuntePerPagina; counter++)
             {
                 Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
             }
