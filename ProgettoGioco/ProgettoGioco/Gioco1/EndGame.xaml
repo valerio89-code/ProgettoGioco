@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProgettoGioco.Gioco1.EndGame">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                
+            <Image Source="https://media.discordapp.net/attachments/847751481078841345/851042974602887178/304340-scena-subacquea-del-paesaggio-della-caverna-gratuito-vettoriale.jpg"
+                    Aspect="AspectFill"/>
+                
+                <Image Source="https://media.discordapp.net/attachments/847751481078841345/851049752568922112/squalo1-removebg-preview.png"
+                       VerticalOptions="Center" HorizontalOptions="Center" Scale="2" TranslationX="-90" TranslationY="-20"/>
+
+                <Image Source="https://media.discordapp.net/attachments/847751481078841345/851051669218263050/pesce_indica-removebg-preview.png"
+                       HorizontalOptions="Center" VerticalOptions="Center" Scale="1.1" TranslationX="145" TranslationY="15"/>
+
+                <Image Scale="0.9" x:Name="img_win" IsVisible="false" TranslationX="0" TranslationY="150" Source="https://cdn.discordapp.com/attachments/847751481078841345/848152659956858920/JazgFgLzHnbrla4B-ON9prC_d8NRQaUvU7fO8GQwtBQIQQ5BBIHTbBGQUQNikHx6hj_7K-bTF203_K_xJZGGAH5A3OqIfYEy.png"></Image>
+                <Image Scale="0.9" x:Name="img_lose" IsVisible="false" TranslationX="0" TranslationY="150" Source="https://cdn.discordapp.com/attachments/847751481078841345/848847127936368650/DVwsEMzREjwuMiwWzq49PVprlU0WzRjmiysc1Z5gsy-Llm7swth9CVDvZzdmNg-fr9dVijjvCnfkkiEQYqopleWxPQy-kIJ.png"></Image>
+
+                <Label FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="Punteggio:" VerticalOptions="End"/>
+                <Label FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="0" x:Name="lbl_punteggio" VerticalOptions="End" TranslationX="110" TranslationY="1"/>
+
+
+                <Button VerticalOptions="Center" HorizontalOptions="Center" Padding="107,0,107,0"
+                    Text="Rigioca" FontAttributes="Bold" x:Name="btn_rigioca" TextColor="White"
+                    TranslationX="95" TranslationY="-45" Clicked="btn_rigioca_Clicked" BackgroundColor="Transparent"/>
+                
+            <Button VerticalOptions="Center" HorizontalOptions="Center" Padding="120,0,120,0"
+                    Text="Esci" FontAttributes="Bold" x:Name="btn_esci" TextColor="White"
+                    TranslationY="-3" TranslationX="-87" Clicked="btn_esci_Clicked" BackgroundColor="Transparent"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

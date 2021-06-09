@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProgettoGioco.Gioco1.Gioco1">
+    <ContentPage.Content>
+        <Grid>
+            <Image Source="https://cdn.discordapp.com/attachments/847751481078841345/849208569467371530/1872006.png" Aspect="AspectFill"/>
+            <Image Source="https://media.discordapp.net/attachments/847751481078841345/851057631145099264/Sole-removebg-preview.png" Aspect="AspectFit"
+                   Scale="0.5" TranslationX="-120" TranslationY="-170"/>
+            <Image Source="https://media.discordapp.net/attachments/847751481078841345/851059568142450718/vignetta-removebg-preview__3_-removebg-preview.png"
+                   Scale="0.5" TranslationX="-50" TranslationY="-250"/>
+            <Label Text="Buona Fortuna!" TranslationX="105" TranslationY="35" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+            <StackLayout>
+            <RadioButton GroupName="Difficoltà" x:Name="rdbn_facile" Content="Facile" TextColor="Black"
+                        IsChecked="True" TranslationX="0" TranslationY="480" FontAttributes="Bold" IsEnabled="true"/>
+                <RadioButton GroupName="Difficoltà" x:Name="rdbn_normale" Content="Normale" TextColor="Black"
+                         TranslationX="82" TranslationY="442" FontAttributes="Bold"  />
+                <RadioButton GroupName="Difficoltà" x:Name="rdbn_difficile" Content="Difficile" TextColor="Black"
+                         TranslationX="185" TranslationY="404" FontAttributes="Bold" />
+                <RadioButton GroupName="Difficoltà" x:Name="rdbn_impossibile" Content="Impossibile" TextColor="Black"
+                         TranslationX="278" TranslationY="365" FontAttributes="Bold" />
+            </StackLayout>
+            <Button Text="Start" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="0.5" Padding="45,25,45,25" FontSize="Large" HorizontalOptions="Center" VerticalOptions="End" Clicked="btn_EnterGame_Clicked"/>
+            <Image Source="https://media.discordapp.net/attachments/847751481078841345/848156568217976832/depositphotos_126553416-stock-illustration-illustration-of-sea-bream-removebg-preview__2_-removebg-p.png" 
+             HeightRequest="120" Rotation="120" TranslationY="-50" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
