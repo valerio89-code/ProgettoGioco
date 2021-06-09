@@ -58,12 +58,12 @@ namespace ProgettoGioco.Gioco1
 
         private void lbl_tempoStart_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (lbl_tempoStart.Text == "20" && uscita == 0)
+            if (lbl_tempoStart.Text == "0" && uscita == 0)
             {
                 Navigation.PopAsync();
                 Navigation.PushAsync(new EndGame(punteggio, difficoltàSelezionata));
                 uscita = 1;
-                //Player.Stop();
+                
             }
         }
 

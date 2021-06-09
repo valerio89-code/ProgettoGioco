@@ -16,6 +16,7 @@ namespace ProgettoGioco.Gioco1
     {
         public int difficoltà = 0;
 
+
         public Gioco1()
         {
             InitializeComponent();
