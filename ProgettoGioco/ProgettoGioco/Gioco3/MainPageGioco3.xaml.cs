@@ -21,5 +21,9 @@ namespace ProgettoGioco.Gioco3
         {
             await Navigation.PushAsync(new Gioco3());
         }
+        private async void Exit_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
     }
 }

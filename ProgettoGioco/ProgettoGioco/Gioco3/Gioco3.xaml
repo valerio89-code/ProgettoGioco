@@ -4,9 +4,12 @@
              x:Class="ProgettoGioco.Gioco3.Gioco3">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="@drawable/exit.png"
+                     x:Name="Exit"
+                     Clicked="Exit_Clicked"/>
         <ToolbarItem IconImageSource="@drawable/home.png"
                      x:Name="Home"
-                     Clicked="ToolbarItem_Clicked"/>
+                     Clicked="btnMenuPrincipale_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <!-- styles -->

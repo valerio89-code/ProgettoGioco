@@ -3,6 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProgettoGioco.Gioco3.MainPageGioco3">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="@drawable/exit.png"
+                     x:Name="Exit"
+                     Clicked="Exit_Clicked"/>
+    </ContentPage.ToolbarItems>
+
     <!-- styles -->
     <ContentPage.Resources>
 

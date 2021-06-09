@@ -23,7 +23,7 @@ namespace ProgettoGioco.Gioco3
         static readonly Livello Livello5 = new Livello(5, 60);
 
         //lista livelli
-        readonly List<Livello> Livelli = new List<Livello>() { Livello1, Livello2, Livello3, Livello4, Livello5 };
+        readonly List<Livello> Livelli = new List<Livello>() { Livello1, Livello2/*, Livello3, Livello4, Livello5*/ };
 
         //field necessari per ciclare i livelli
         int position = 0;
@@ -115,10 +115,16 @@ namespace ProgettoGioco.Gioco3
             ShowLevel();
         }
 
-        private async void btnMenuPrincipale_Clicked(object sender, EventArgs e)
+        private async void Exit_Clicked(object sender, EventArgs e)
         {
             Reset();
             await Navigation.PushAsync(new MainPage());
+        }
+
+        private async void btnMenuPrincipale_Clicked(object sender, EventArgs e)
+        {
+            Reset();
+            await Navigation.PushAsync(new MainPageGioco3());
         }
 
         private void ShowGameLayout()

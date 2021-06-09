@@ -13,6 +13,7 @@ namespace ProgettoGioco
         public MainPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
         }
 
         private void Button_Clicked(object sender, EventArgs e)
