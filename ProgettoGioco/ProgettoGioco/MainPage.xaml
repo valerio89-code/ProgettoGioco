@@ -6,7 +6,7 @@
     <StackLayout>
         <Button Text="Inizia gioco 1" Clicked="Button_Clicked"/>
         <Button Text="Inizia gioco 2" Clicked="Button_Clicked_1"/>
-        <Button Text="Inizia gioco 3" Clicked="Button_Clicked_2"/>
+        <Button Text="Click Faster" Clicked="Button_Clicked_2"/>
 </StackLayout>
 
 </ContentPage>
