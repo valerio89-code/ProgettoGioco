@@ -21,6 +21,9 @@ namespace ProgettoGioco
         public string Normale { get { return normale; } set { normale = value; OnPropertyChanged("Normale"); } }
         public string Difficile { get { return difficile; } set { difficile = value; OnPropertyChanged("Difficile"); } }
         public string Impossibile { get { return impossibile; } set { impossibile = value; OnPropertyChanged("Impossibile"); } }
+        public string temp;
+        public string Temps { get { return temp; } set { temp = value; OnPropertyChanged("Temps"); } }
+        
 
         public string StopWatchSecond
         {
@@ -37,6 +40,14 @@ namespace ProgettoGioco
 
         public StartGameOneViewModel()
         {
+            Tempo.Start();
+            Temps = Tempo.Elapsed.Seconds.ToString();
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            {
+                Temps = Tempo.Elapsed.Seconds.ToString();
+                return true;
+            });
+
             Tempo.Start();
             Facile = Tempo.Elapsed.Seconds.ToString();
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>

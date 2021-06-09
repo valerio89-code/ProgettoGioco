@@ -17,6 +17,7 @@ namespace ProgettoGioco.Gioco1
         public int punteggio = 0;
         public int uscita = 0;
         int difficoltàSelezionata;
+        int time = 22;
 
         public Random rnd = new Random();
         public StartGameOne(int difficoltà)
@@ -60,14 +61,10 @@ namespace ProgettoGioco.Gioco1
             if (lbl_tempoStart.Text == "20" && uscita == 0)
             {
                 Navigation.PopAsync();
-                Navigation.PushAsync(new EndGame(punteggio,difficoltàSelezionata));
+                Navigation.PushAsync(new EndGame(punteggio, difficoltàSelezionata));
                 uscita = 1;
                 //Player.Stop();
             }
-        }
-        private void lbl_Timer_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-
         }
 
         private void lbl_facile_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -109,5 +106,11 @@ namespace ProgettoGioco.Gioco1
                 btn_CliccaImmagine.TranslationX = rnd.Next(-190, 190);
             }
         }
+
+        private void lbl_tempo_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            time--;
+            lbl_tempoStart.Text = time.ToString();
+        } 
     }
 }

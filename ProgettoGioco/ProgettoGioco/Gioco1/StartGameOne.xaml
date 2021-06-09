@@ -10,12 +10,14 @@
                     <Label Text="{Binding Normale}" IsVisible="False" PropertyChanged="lbl_normale_PropertyChanged"  x:Name="lbl_normale"/>
                     <Label Text="{Binding Difficile}" IsVisible="False" PropertyChanged="lbl_difficile_PropertyChanged"  x:Name="lbl_difficile"/>
                     <Label Text="{Binding Impossibile}" IsVisible="False" PropertyChanged="lbl_impossibile_PropertyChanged"  x:Name="lbl_impossibile"/>
+                    <Label Text="{Binding Temps}" IsVisible="False" PropertyChanged="lbl_tempo_PropertyChanged"  x:Name="lbl_tempo"/>
+
                     <Image Source="" x:Name="img_Risultato"/>
 
                     <Label Text="Secondi:" FontSize="Large" TextColor="Red" VerticalOptions="Start"
                    HorizontalOptions="Start" TranslationY="-14" TranslationX="0"/>
 
-                    <Label Text="{Binding StopWatchSecond}" TextColor="Red"  FontSize="Large"
+                    <Label Text="22" TextColor="Red"  FontSize="Large"
                        x:Name="lbl_tempoStart" PropertyChanged="lbl_tempoStart_PropertyChanged"
                        VerticalOptions="Start" HorizontalOptions="Start" TranslationX="90" TranslationY="-50"/>
                     
