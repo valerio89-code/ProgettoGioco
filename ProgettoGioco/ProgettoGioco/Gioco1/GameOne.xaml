@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProgettoGioco.Gioco1.Gioco1">
+    
     <ContentPage.Content>
         <Grid>
-            <Image Source="https://cdn.discordapp.com/attachments/847751481078841345/849208569467371530/1872006.png" Aspect="AspectFill"/>
-            <Image Source="https://media.discordapp.net/attachments/847751481078841345/851057631145099264/Sole-removebg-preview.png" Aspect="AspectFit"
+            <Image Source="SfondoMenuPrincipale.png" Aspect="AspectFill"/>
+            <Image Source="Sole.png" Aspect="AspectFit"
                    Scale="0.5" TranslationX="-120" TranslationY="-170"/>
             <Image Source="https://media.discordapp.net/attachments/847751481078841345/851059568142450718/vignetta-removebg-preview__3_-removebg-preview.png"
                    Scale="0.5" TranslationX="-50" TranslationY="-250"/>

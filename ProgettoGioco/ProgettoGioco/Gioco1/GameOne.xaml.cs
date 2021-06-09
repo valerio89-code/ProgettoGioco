@@ -19,8 +19,7 @@ namespace ProgettoGioco.Gioco1
 
         public Gioco1()
         {
-            InitializeComponent();
-
+            InitializeComponent();            
         }
 
         private void btn_EnterGame_Clicked(object sender, EventArgs e)

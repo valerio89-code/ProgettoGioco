@@ -23,8 +23,6 @@ namespace ProgettoGioco
         public string Normale { get { return normale; } set { normale = value; OnPropertyChanged("Normale"); } }
         public string Difficile { get { return difficile; } set { difficile = value; OnPropertyChanged("Difficile"); } }
         public string Impossibile { get { return impossibile; } set { impossibile = value; OnPropertyChanged("Impossibile"); } }
-        public string temp;
-        public string Temps { get { return temp; } set { temp = value; OnPropertyChanged("Temps"); } }
         
 
         public string StopWatchSecond
