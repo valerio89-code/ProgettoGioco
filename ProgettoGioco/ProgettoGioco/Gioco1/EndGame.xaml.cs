@@ -86,15 +86,12 @@ namespace ProgettoGioco.Gioco1
         private void btn_rigioca_Clicked(object sender, EventArgs e)
         {
             lbl_punteggio.Text = "0";
-
-            Navigation.PopAsync();
             Navigation.PopAsync();
         }
 
         private void btn_esci_Clicked(object sender, EventArgs e)
         {
             lbl_punteggio.Text = "0";
-            Navigation.PopAsync();
             Navigation.PopAsync();
             Navigation.PopAsync();
         }
