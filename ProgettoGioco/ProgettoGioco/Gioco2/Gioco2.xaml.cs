@@ -12,7 +12,7 @@ using Plugin.SimpleAudioPlayer;
 namespace ProgettoGioco.Gioco2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GiocoSequenza : ContentPage
+    public partial class Gioco2 : ContentPage
     {
         public ISimpleAudioPlayer Player { get; set; }
         public int SequenceIndex { get; set; } = 0;
@@ -75,7 +75,7 @@ namespace ProgettoGioco.Gioco2
             }
         }
 
-        public GiocoSequenza(int livello, int vite, string difficulty)
+        public Gioco2(int livello, int vite, string difficulty)
         {
             InitializeComponent();
 
@@ -190,7 +190,7 @@ namespace ProgettoGioco.Gioco2
         {
             lbl_result.Text = "You lost";
 
-            if (await DisplayAlert("You lost", "Would you like to restart?", "Yes", "No")) { await RestartFromPage(new GiocoSequenza(1, 3, Difficulty), 0); }
+            if (await DisplayAlert("You lost", "Would you like to restart?", "Yes", "No")) { await RestartFromPage(new Gioco2(1, 3, Difficulty), 0); }
             else { await Exit(); }
         }
 
@@ -206,7 +206,7 @@ namespace ProgettoGioco.Gioco2
         private async Task Win()
         {
             if (await DisplayAlert("Victory", $"Game completed,{Environment.NewLine} Would you like to restart?", "Yes", "No"))
-            { await RestartFromPage(new GiocoSequenza(1, 3, Difficulty), 0); }
+            { await RestartFromPage(new Gioco2(1, 3, Difficulty), 0); }
             else { await Exit(); }
         }
 
@@ -216,7 +216,7 @@ namespace ProgettoGioco.Gioco2
             {
                 Level++;
 
-                await Navigation.PushAsync(new GiocoSequenza(Level, Lifes, Difficulty));
+                await Navigation.PushAsync(new Gioco2(Level, Lifes, Difficulty));
             }
             else { await Exit(); }
         }

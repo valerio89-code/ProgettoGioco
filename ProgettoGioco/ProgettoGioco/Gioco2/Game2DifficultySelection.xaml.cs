@@ -26,7 +26,7 @@ namespace ProgettoGioco.Gioco2
 
             if (difficulty == "Impossible") lifes = 1;
 
-            await Navigation.PushAsync(new GiocoSequenza(level, lifes, difficulty));
+            await Navigation.PushAsync(new Gioco2(level, lifes, difficulty));
         }
     }
 }
