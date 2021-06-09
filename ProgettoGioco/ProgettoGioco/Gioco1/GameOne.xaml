@@ -12,7 +12,7 @@
             <Label Text="Buona Fortuna!" TranslationX="105" TranslationY="35" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
             <StackLayout>
             <RadioButton GroupName="Difficoltà" x:Name="rdbn_facile" Content="Facile" TextColor="Black"
-                         TranslationX="0" TranslationY="480" FontAttributes="Bold" IsEnabled="true"/>
+                        IsChecked="True" TranslationX="0" TranslationY="480" FontAttributes="Bold" IsEnabled="true"/>
                 <RadioButton GroupName="Difficoltà" x:Name="rdbn_normale" Content="Normale" TextColor="Black"
                          TranslationX="82" TranslationY="442" FontAttributes="Bold"  />
                 <RadioButton GroupName="Difficoltà" x:Name="rdbn_difficile" Content="Difficile" TextColor="Black"
