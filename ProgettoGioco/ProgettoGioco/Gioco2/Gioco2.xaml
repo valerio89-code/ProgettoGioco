@@ -85,8 +85,8 @@
                 </Grid>
                 <Grid Grid.Row="2"
                         Grid.Column="1">
-                    <Label Text="Get Raedy"
-                           x:Name="lbl_raedy"
+                    <Label Text="Get Ready"
+                           x:Name="lbl_ready"
                            TextColor="Black"
                            FontAttributes="Bold"
                            FontSize="Body"

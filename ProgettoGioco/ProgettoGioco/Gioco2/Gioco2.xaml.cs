@@ -98,7 +98,7 @@ namespace ProgettoGioco.Gioco2
             Timer = 1;
             await Task.Delay(1000);
 
-            lbl_raedy.IsVisible = false;
+            lbl_ready.IsVisible = false;
             lbl_timer.IsVisible = false;
             gridBottoni.IsVisible = true;
 

@@ -5,6 +5,7 @@
              Title = "Choose Difficulty"
              BackgroundColor="LightYellow">
     <ContentPage.Content >
+        <ScrollView>
         <StackLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -130,5 +131,6 @@
                 </Grid>
             </Grid>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
