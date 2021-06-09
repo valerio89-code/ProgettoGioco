@@ -11,6 +11,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Gioco2\images\heart.png" />
+    <None Remove="Gioco2\sounds\defeat.mp3" />
+    <None Remove="Gioco2\sounds\greenButton.mp3" />
+    <None Remove="Gioco2\sounds\levelCompleted.mp3" />
+    <None Remove="Gioco2\sounds\redButton.mp3" />
+    <None Remove="Gioco2\sounds\victory.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Gioco2\images\heart.png" />
+    <EmbeddedResource Include="Gioco2\sounds\defeat.mp3" />
+    <EmbeddedResource Include="Gioco2\sounds\greenButton.mp3" />
+    <EmbeddedResource Include="Gioco2\sounds\levelCompleted.mp3" />
+    <EmbeddedResource Include="Gioco2\sounds\redButton.mp3" />
+    <EmbeddedResource Include="Gioco2\sounds\victory.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
     <None Remove="Gioco1\Canzoni\Lose.mp3" />
     <None Remove="Gioco1\Canzoni\Start.mp3" />
     <None Remove="Gioco1\Canzoni\Win.mp3" />
@@ -31,6 +50,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Gioco2\Game2DifficultySelection.xaml.cs">
+      <DependentUpon>Game2DifficultySelection.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Gioco1\Gioco1.xaml"/>
     <EmbeddedResource Update="Gioco1\EndGame.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -38,6 +64,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Gioco1\StartGameOne.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Gioco2\Game2DifficultySelection.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Gioco2\Gioco2.xaml">

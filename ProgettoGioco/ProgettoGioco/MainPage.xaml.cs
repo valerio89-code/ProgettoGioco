@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProgettoGioco.Gioco2;
+using System;
 using Xamarin.Forms;
 
 namespace ProgettoGioco
@@ -20,10 +16,11 @@ namespace ProgettoGioco
             await Navigation.PushAsync(new Gioco1.Gioco1());
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private async void Button_Clicked_1(object sender, EventArgs e)
         {
             //da modificare dal gruppo 2
-            //Navigation.PushAsync(new  )
+
+            await Navigation.PushAsync(new Game2DifficultySelection());
         }
 
         private void Button_Clicked_2(object sender, EventArgs e)

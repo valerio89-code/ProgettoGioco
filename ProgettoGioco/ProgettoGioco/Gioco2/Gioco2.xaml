@@ -1,12 +1,270 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProgettoGioco.Gioco2.Gioco2">
+             x:Class="ProgettoGioco.Gioco2.Gioco2"
+             xmlns:local="clr-namespace:ProgettoGioco.Gioco2"
+             BackgroundColor="Beige">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0"
+                      Grid.RowSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid Grid.Column="1"
+                          Grid.Row="0">
+
+                        <Label Text="Level"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                       Grid.Row="0"/>
+                        <Label Text="{Binding Level}"
+                           TextColor="Red"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           Grid.Row="1"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Grid.Row="0">
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Difficulty"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                       Grid.Row="0"/>
+                        <Button Text="{Binding Difficulty}"
+                                TextColor="Red"
+                                x:Name="btn_changeDifficulty"
+                                Clicked="btn_changeDifficulty_Clicked"
+                                BackgroundColor="Bisque"
+                                FontSize="Large"
+                                FontAttributes="Bold"
+                                CornerRadius="15"
+                                Grid.Row="1"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Grid.ColumnSpan="3">
+                    <Label Text=""
+                           x:Name="lbl_inputNumber"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="20"
+                           TextColor="Green"
+                           Grid.Row="0"/>
+                    <Label Text=""
+                           x:Name="lbl_result"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="15"
+                           TextColor="Black"
+                           Grid.Row="1"/>
+                </Grid>
+                <Grid Grid.Row="2"
+                        Grid.Column="1">
+                    <Label Text="Get Ready"
+                           x:Name="lbl_ready"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="Body"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.Row="0" />
+                    <Label Text="{Binding Timer}"
+                           x:Name="lbl_timer"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="Body"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.Row="1" />
+                </Grid>
+                
+                <Grid Grid.Column="2"
+                      Grid.RowSpan="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Image Source="{local:MediaResource ProgettoGioco.Gioco2.images.heart.png}"
+                               Grid.Column="0"
+                               x:Name="image_heart3"/>
+                        <Image Source="{local:MediaResource ProgettoGioco.Gioco2.images.heart.png}"
+                               Grid.Column="1"
+                               x:Name="image_heart2"/>
+                        <Image Source="{local:MediaResource ProgettoGioco.Gioco2.images.heart.png}"
+                               Grid.Column="2"
+                               x:Name="image_heart1"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid x:Name="gridBottoni"
+                  IsVisible="false">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="150" />
+                </Grid.RowDefinitions>
+                <Button Text="1" 
+                        CornerRadius="90"
+                        IsEnabled="False"
+                        x:Name="btn_uno" 
+                        Grid.Column="0"  
+                        Grid.Row="0" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
+                        Clicked="btn_Clicked"
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="2" 
+                        CornerRadius="90"
+                        IsEnabled="False"
+                        x:Name="btn_due" 
+                        Grid.Column="1"  
+                        Grid.Row="0" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
+                        Clicked="btn_Clicked"
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="3" 
+                        CornerRadius="90"
+                        IsEnabled="False"
+                        x:Name="btn_tre" 
+                        Grid.Column="2"  
+                        Grid.Row="0" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
+                        Clicked="btn_Clicked"
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="4" 
+                        CornerRadius="90"
+                        IsEnabled="False"
+                        x:Name="btn_quattro" 
+                        Grid.Column="0"  
+                        Grid.Row="1" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
+                        Clicked="btn_Clicked"
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="5"
+                        CornerRadius="90"
+                        IsEnabled="False"
+                        x:Name="btn_cinque" 
+                        Grid.Column="1"  
+                        Grid.Row="1" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
+                        Clicked="btn_Clicked"
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="6"
+                        CornerRadius="90"
+                        IsEnabled="False"
+                        x:Name="btn_sei" 
+                        Grid.Column="2"  
+                        Grid.Row="1" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
+                        Clicked="btn_Clicked"
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="7"
+                        CornerRadius="90"
+                        IsEnabled="False"
+                        x:Name="btn_sette" 
+                        Grid.Column="0"  
+                        Grid.Row="2" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
+                        Clicked="btn_Clicked"
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="8"
+                        CornerRadius="90"
+                        IsEnabled="False"
+                        x:Name="btn_otto"  
+                        Grid.Column="1"  
+                        Grid.Row="2" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
+                        Clicked="btn_Clicked"
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="9"
+                        CornerRadius="90"
+                        IsEnabled="False"
+                        x:Name="btn_nove" 
+                        Grid.Column="2"  
+                        Grid.Row="2" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
+                        Clicked="btn_Clicked"
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="0"
+                        CornerRadius="90"
+                        IsEnabled="False"
+                        x:Name="btn_zero" 
+                        Grid.Column="1"  
+                        Grid.Row="3" 
+                        BackgroundColor="White"
+                        BorderWidth="5"
+                        BorderColor="White"
+                        Clicked="btn_Clicked"
+                        FontSize="Header"
+                        FontAttributes="Bold"/>
+                <Button Text="Exit" 
+                        x:Name="btn_exit" 
+                        Grid.Column="2"  
+                        Grid.Row="3" 
+                        CornerRadius="90"
+                        Clicked="btn_exit_Clicked"
+                        FontSize="Large"
+                        FontAttributes="Bold"/>
+            </Grid>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
