@@ -11,29 +11,27 @@
                     <Label Text="{Binding Difficile}" IsVisible="False" PropertyChanged="lbl_difficile_PropertyChanged"  x:Name="lbl_difficile"/>
                     <Label Text="{Binding Impossibile}" IsVisible="False" PropertyChanged="lbl_impossibile_PropertyChanged"  x:Name="lbl_impossibile"/>
                     <Label Text="{Binding Temps}" IsVisible="False" PropertyChanged="lbl_tempo_PropertyChanged"  x:Name="lbl_tempo"/>
-
-                    <Image Source="" x:Name="img_Risultato"/>
-
+                    
                     <Label Text="Secondi:" FontSize="Large" TextColor="Red" VerticalOptions="Start"
-                   HorizontalOptions="Start" TranslationY="-14" TranslationX="0"/>
+                   HorizontalOptions="Start" TranslationY="-7" TranslationX="0"/>
 
-                    <Label Text="22" TextColor="Red"  FontSize="Large"
+                    <Label TextColor="Red"  FontSize="Large"
                        x:Name="lbl_tempoStart" PropertyChanged="lbl_tempoStart_PropertyChanged"
-                       VerticalOptions="Start" HorizontalOptions="Start" TranslationX="90" TranslationY="-50"/>
+                       VerticalOptions="Start" HorizontalOptions="Start" TranslationX="90" TranslationY="-42"/>
                     
                     <Label Text="Punteggio: 0" TextColor="Blue" x:Name="lbl_punteggioGame"
-                       FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" TranslationX="275" TranslationY="-85"/>
+                       FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" TranslationX="275" TranslationY="-79"/>
 
                 </StackLayout>
 
-                <ImageButton Source="https://cdn.discordapp.com/attachments/847751481078841345/848149537579466762/nuovoscree2.png" 
+                <ImageButton Source="SfondoGioco.png" 
                              Aspect="AspectFit" Clicked="ImageButton_Clicked"
                              TranslationX="0" TranslationY="15"/>
 
-                <Button x:Name="btn_CliccaImmagine" Clicked="btn_CliccaImmagine_Clicked" Margin="180" VerticalOptions="Center" 
-                        ImageSource="https://cdn.discordapp.com/attachments/847751481078841345/848145606988136468/orata2_1.png"
-                        BackgroundColor="Transparent" IsVisible="false"
-                        />
+                <Button x:Name="btn_CliccaImmagine" Clicked="btn_CliccaImmagine_Clicked" Margin="140" VerticalOptions="Center" 
+                        ImageSource="OrataBottone.png"
+                        Scale="0.5"
+                        BackgroundColor="Transparent" IsVisible="false"/>
 
             </Grid>
         </StackLayout>
