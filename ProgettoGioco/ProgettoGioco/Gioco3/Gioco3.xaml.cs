@@ -23,7 +23,7 @@ namespace ProgettoGioco.Gioco3
         static readonly Livello Livello5 = new Livello(5, 60);
 
         //lista livelli
-        readonly List<Livello> Livelli = new List<Livello>() { Livello1, Livello2/*, Livello3, Livello4, Livello5*/ };
+        readonly List<Livello> Livelli = new List<Livello>() { Livello1, Livello2, Livello3, Livello4, Livello5 };
 
         //field necessari per ciclare i livelli
         int position = 0;
@@ -62,6 +62,7 @@ namespace ProgettoGioco.Gioco3
 
             if (clickCounter == livello.CondizioneVittoria)
             {
+                btnClicca.IsEnabled = false;
                 timerLivello.Stop();
 
                 if (timerLivello.Elapsed.TotalSeconds <= 5)
@@ -155,6 +156,7 @@ namespace ProgettoGioco.Gioco3
             lbl_Livello.Text = livello.NumeroLivello;
             lbl_Sottotitolo.Text = livello.Descrizione;
             lbl_clickCounter.Text = "0";
+            btnClicca.IsEnabled = true;
         }
 
         void NextLevel()
